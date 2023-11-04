@@ -1,9 +1,18 @@
+using PIM_DESENVOLTECH.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+//String de conexão com o SQL Server
+//builder.Services.AddDbContext<Contexto>
+//    (
+//        options => options.UseSqlServer("Data Source=SAMUEL\\SQLSERVER2022;Initial Catalog=DesenvolTech_Teste; Integrated Security=SSPI; TrustServerCertificate=True; Persist Security Info=False; User Id=SAMUEL\\sammj")
+//    );
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
