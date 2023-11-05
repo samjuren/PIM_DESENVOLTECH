@@ -11,7 +11,7 @@ var app = builder.Build();
 //String de conexão com o SQL Server
 //builder.Services.AddDbContext<Contexto>
 //    (
-//        options => options.UseSqlServer("Data Source=SAMUEL\\SQLSERVER2022;Initial Catalog=DesenvolTech_Teste; Integrated Security=SSPI; TrustServerCertificate=True; Persist Security Info=False; User Id=SAMUEL\\sammj")
+//        options => options.UseSqlServer("Data Source=SAMUEL\\SQLSERVER2022;Initial Catalog=DesenvolTech_PIM; Integrated Security=SSPI; TrustServerCertificate=True; Persist Security Info=False; User Id=SAMUEL\\sammj")
 //    );
 
 // Configure the HTTP request pipeline.
@@ -31,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();
