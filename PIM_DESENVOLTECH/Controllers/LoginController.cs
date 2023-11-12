@@ -16,5 +16,22 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             return View();
         }
+
+        public void ChecarUsuario(string Login, string Senha)
+        {
+            var login = _context.Login.FirstOrDefault(
+                                                        x => x.NomeLogin
+                                                        ==
+                                                        Login && x.SenhaLogin == Senha
+                                                     );
+
+            if (login == null)
+                return;            
+            else
+            {
+                //proxima página.
+            }         
+            
+        }
     }
 }

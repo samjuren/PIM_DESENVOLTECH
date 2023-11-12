@@ -7,109 +7,184 @@
 }
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        padding: 0;
-        color: #023047
-    }
-
-    .page {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
         width: 100%;
-        height: 100vh;
+        min-height: 100vh;
+        background-image: linear-gradient(295deg, rgb(0, 157, 255) 50%, white 50%);
+        font-family: 'Poppins', sans-serif;
     }
 
-    .formLogin {
+    .conteudo-principal {
+        width: 100%;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
-        background-color: #fff;
+    }
+
+    .forms-img {
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+    }
+
+    .label {
+        text-align:;
+    }
+
+
+    a {
+        text-decoration: none;
+        right: 0;
+    }
+
+
+
+    .tech {
+        font-size: 2.8em;
+        text-transform: uppercase;
+    }
+
+    .titulo {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding-left: 4em;
+        padding-top: 2em;
+        letter-spacing: 1px;
+        color: rgba(0, 0, 0, .1);
+        font-size: 1.5em;
+    }
+
+
+    legend {
+        text-align: center;
+        font-size: 1.5em;
+        padding-top: 2em;
+        border-radius: 2px;
+    }
+
+    .titulo h1 {
+        font-size: 4em;
+    }
+
+    .label {
+        width: 100%;
+    }
+
+    .form-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0 5em;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        border: none;
+        width: 400px;
+        height: 400px;
         border-radius: 7px;
-        padding: 40px;
-        box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
-        gap: 5px
+        margin-bottom: 3em;
     }
 
-    .areaLogin img {
-        width: 420px;
+    .campo-entrada {
+        width: 350px;
+        padding: .7em;
+        border: none;
+        border-bottom: 2px solid black;
+        background-color: transparent;
     }
 
-    .formLogin h1 {
-        padding: 0;
-        margin: 0;
-        font-weight: 500;
-        font-size: 2.3em;
-    }
-
-    .formLogin p {
-        display: inline-block;
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 25px;
-    }
-
-    .formLogin input {
-        padding: 15px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        margin-bottom: 20px;
-        margin-top: 5px;
-        border-radius: 4px;
-        transition: all linear 160ms;
-        outline: none;
-    }
-
-
-        .formLogin input:focus {
-            border: 1px solid #f72585;
-        }
-
-    .formLogin label {
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-    .formLogin a {
-        display: inline-block;
-        margin-bottom: 20px;
-        font-size: 13px;
-        color: #555;
-        transition: all linear 160ms;
-    }
-
-        .formLogin a:hover {
-            color: #f72585;
-        }
-
-    .btn {
-        background-color: #f72585;
-        color: #fff;
-        font-size: 14px;
-        font-weight: 600;
-        border: none !important;
-        transition: all linear 160ms;
+    .btn-form {
+        width: 80%;
+        padding: .7em;
+        background-color: green;
+        color: aliceblue;
+        border-radius: 5px;
+        border: none;
         cursor: pointer;
-        margin: 0 !important;
+        text-transform: uppercase;
+        transition: .6s;
     }
 
-        .btn:hover {
-            transform: scale(1.05);
-            background-color: #ff0676;
+        .btn-form:hover {
+            transform: scale(1.06);
+            background-color: rgb(105, 176, 0);
+            box-shadow: 0px 0px 10px black;
+        }
+
+    .btns-form {
+        display: flex;
+        gap: 2em;
+        align-items: center;
+    }
+
+        .btns-form a {
+            font-size: 12px;
+        }
+
+        .btns-form label {
+            font-size: 12px;
+        }
+
+    .logo {
+        margin-right: 5em;
+        border: 2px solid black;
+        border-radius: 8px;
+        object-fit: cover;
+        background-color: white
+    }
+
+        .logo img {
+            height: 250px;
+            width: 370px;
+            border-radius: 8px;
         }
 </style>
 
 <div class="page">
-    <form method="POST" class="formLogin">
-        <h1>Login</h1>
-        <p>Digite os seus dados de acesso no campo abaixo.</p>
-        <label for="email">E-mail</label>
-        <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
-        <label for="password">Senha</label>
-        <input type="password" placeholder="Digite seu e-mail" />
-        <input type="submit" value="Acessar" class="btn" />
-    </form>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+
+    <main class="conteudo-principal">
+        <div class="titulo">
+            <h1 class="tech">Desenvoltech</h1>
+        </div>
+        <div class="forms-img">
+            <form class="formulario">
+                <fieldset class="form-content">
+                    <legend>Faça o login com sua conta</legend>
+                    <label for="email" class="label">E-mail</label>
+                    <input type="email" name="email" id="email" required placeholder="Digite seu email" class="campo-entrada">
+                    <label for="senha" class="label">Senha</label>
+                    <input type="password" name="senha" id="senha" required placeholder="Digite sua senha" class="campo-entrada">
+                    <div class="btns-form">
+                        <div class="radio">
+                            <input type="radio" id="radio">
+                            <label for="radio">Lembrar a senha</label>
+                        </div>
+                        <a href="#">Esqueceu sua senha?</a>
+                    </div>
+
+                    <button class="btn-form">Entrar</button>
+                </fieldset>
+            </form>
+            <div class="logo">
+                <img src="images/Captura_de_tela_2023-06-14_220520-removebg-preview.png" alt="">
+            </div>
+        </div>
+
+    </main>
+
+
 </div>
