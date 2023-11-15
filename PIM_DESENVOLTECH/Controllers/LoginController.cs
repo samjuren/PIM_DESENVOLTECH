@@ -16,8 +16,8 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             return View();
         }
-
-        public void ChecarUsuario(string Login, string Senha)
+       
+        public IActionResult ChecarUsuario(string Login, string Senha)
         {
             var login = _context.Login.FirstOrDefault(
                                                         x => x.NomeLogin
@@ -26,12 +26,13 @@ namespace PIM_DESENVOLTECH.Controllers
                                                      );
 
             if (login == null)
-                return;            
+            {
+                return Index();
+            }                            
             else
             {
-                //proxima página.
-            }         
-            
+               return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
