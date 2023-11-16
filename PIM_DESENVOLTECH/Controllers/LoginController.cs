@@ -19,20 +19,16 @@ namespace PIM_DESENVOLTECH.Controllers
        
         public IActionResult ChecarUsuario(string Login, string Senha)
         {
-            var login = _context.Login.FirstOrDefault(
-                                                        x => x.NomeLogin
-                                                        ==
-                                                        Login && x.SenhaLogin == Senha
-                                                     );
+            var login = _context.Login.FirstOrDefault(x =>
+                x.NomeLogin == Login 
+                &&
+                x.SenhaLogin == Senha
+                );
 
-            if (login == null)
-            {
+            if (login == null)            
                 return Index();
-            }                            
             else
-            {
-               return RedirectToAction("Index", "Home");
-            }
+                return RedirectToAction("Index", "Home");
         }
     }
 }

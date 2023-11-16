@@ -10,5 +10,8 @@ namespace PIM_DESENVOLTECH.Models
             : base(options) { }
 
         public DbSet<Login> Login { get; set; }
+        public DbSet<Pessoa> Pessoa { get; set; }
+        public DbSet<Logradouro> Logradouro { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
     }
 }

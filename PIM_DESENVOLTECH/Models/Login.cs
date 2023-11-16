@@ -20,5 +20,9 @@ namespace PIM_DESENVOLTECH.Models
         [Column("SenhaLogin")]
         [Display(Name = "Senha")]
         public string? SenhaLogin { get; set; }
+
+        [Column("IsAdm")]
+        [Display(Name = "IsAdm")]
+        public bool IsAdm { get; set; }
     }
 }
