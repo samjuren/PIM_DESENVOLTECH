@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PIM_DESENVOLTECH.Models;
 
@@ -11,9 +12,11 @@ using PIM_DESENVOLTECH.Models;
 namespace PIM_DESENVOLTECH.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231117214513_BancoAtualizado2")]
+    partial class BancoAtualizado2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,12 +90,20 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("NomeCompleto");
 
+                    b.Property<string>("NomeMae")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("NomeMae");
+
+                    b.Property<string>("NomePai")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("NomePai");
+
                     b.Property<string>("NomeRua")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("NomeRua");
 
-                    b.Property<int?>("NumeroRua")
-                        .HasColumnType("int")
+                    b.Property<string>("NumeroRua")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("NumeroRua");
 
                     b.Property<string>("RG")

@@ -1,0 +1,159 @@
+﻿@model PIM_DESENVOLTECH.Models.Funcionario;
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/teste.css">
+    <title>Home</title>
+</head>
+<body>
+
+    <aside class="menu-lateral">
+        <header class="header-menu">
+
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <ul class="naveg">
+                <li>
+                    <a href="calcular-ferias.html"><i class="fa-solid fa-calculator"></i> Calcular férias</a>
+                </li>
+                <li>
+                    <a href="apontamento-de-horas.html"><i class="fa-solid fa-clock"></i> Apontamento de horas</a>
+                </li>
+                <li>
+                    <a href="relacao-de-ferias.html"><i class="fa-solid fa-umbrella-beach"></i> Relação de férias</a>
+                </li>
+                <li>
+                    <a href="cadastrar-funcionario.html"><i class="fa-solid fa-right-from-bracket"></i> Cadastrar funcionário</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+                </li>
+            </ul>
+
+        </header>
+    </aside>
+
+    <main class="dados-content">
+        <form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="title">Cadastrar funcionário</h1>
+                    </div>
+                    <div>
+                        <h5>Dados Pessoais</h5>
+                    </div>
+                    <div class="col-md-3 fields">
+                        <label for="">Nome:</label>
+                        <input asp-for="NomeCompleto" name="NomeCompleto" id="inpNome" class="form-control" type="text">
+                    </div>
+                    <div class="col-md-3 fields">
+                        <label for="">CPF:</label>
+                        <input asp-for="CPF" name="CPF" id="inpCPF" class="form-control" type="text">
+                    </div>
+                    <div class="col-md-3 fields">
+                        <label for="">RG:</label>
+                        <input asp-for="RG" id="inpRG" name="RG" class="form-control" type="text">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Email:</label>
+                        <input asp-for="Email" name="Email" id="inpEmail" class="form-control" type="text">
+                    </div>
+                    <div class="col-md-3 fields">
+                        <label for="">Nascimento:</label>
+                        <input asp-for="Nascimento" id="inpNascimento" name="Nascimento" class="form-control" type="date">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Idade:</label>
+                        <input asp-for="Idade" id="inpIdade" name="Idade" class="form-control" type="number">
+                    </div>
+
+                    <hr />
+                    <div>
+                        <h5>Dados Empregador</h5>
+                    </div>
+                    <div class="col-md-3 fields">
+                        <label for="">Cargo</label>
+                        <input asp-for="NomeCargo" name="NomeCargo" id="inpDepartamento" class="form-control" type="text">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Departamento</label>
+                        <input asp-for="Departamento" name="Departamento" id="inpDepartamento" class="form-control" type="text">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Salário:</label>
+                        <input asp-for="Salario" name="Salario" id="inpSalario" class="form-control" type="number">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Data Admissão:</label>
+                        <input asp-for="DataAdmissao" name="DataAdmissao" id="inpAdmissao" class="form-control" type="date">
+                    </div>
+
+                    <hr />
+
+                    <div>
+                        <h5>Dados Logradouro</h5>
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Nome da Rua</label>
+                        <input asp-for="NomeRua" name="NomeRua" id="inpNomeRua" class="form-control" type="text">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">CEP</label>
+                        <input asp-for="CEP" name="CEP" id="inpNomeRua" class="form-control" type="text">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Número:</label>
+                        <input asp-for="NumeroRua" name="NumeroRua" id="inpNumeroCasa" class="form-control" type="number">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Complemento</label>
+                        <input asp-for="Complemento" name="Complemento" id="inpComplemento" class="form-control" type="text">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Estado:</label>
+                        <input asp-for="Estado" name="Estado" id="inpEstado" class="form-control" type="text">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Cidade:</label>
+                        <input asp-for="Cidade" name="Cidade" id="inpCidade" class="form-control" type="text">
+                    </div>
+                     
+                    <div class="col-md-12 fields">
+                        <button asp-action="CadastrarFuncionarioBanco" type="submit" class="btn btn-success float-right">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+
+
+
+</body>
+</html>

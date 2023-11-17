@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PIM_DESENVOLTECH.Models;
 
@@ -11,9 +12,11 @@ using PIM_DESENVOLTECH.Models;
 namespace PIM_DESENVOLTECH.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231117203144_BancoAtualizado")]
+    partial class BancoAtualizado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,14 +58,6 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("DataDemissao");
 
-                    b.Property<string>("Departamento")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Departamento");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Email");
-
                     b.Property<string>("Estado")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Estado");
@@ -87,12 +82,16 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("NomeCompleto");
 
-                    b.Property<string>("NomeRua")
+                    b.Property<string>("NomeMae")
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("NomeRua");
+                        .HasColumnName("NomeMae");
 
-                    b.Property<int?>("NumeroRua")
-                        .HasColumnType("int")
+                    b.Property<string>("NomePai")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("NomePai");
+
+                    b.Property<string>("NumeroRua")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("NumeroRua");
 
                     b.Property<string>("RG")

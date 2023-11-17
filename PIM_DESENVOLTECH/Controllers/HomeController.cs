@@ -6,21 +6,24 @@ namespace PIM_DESENVOLTECH.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly Contexto _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(Contexto context)
         {
-            _logger = logger;
+            _context = context;
         }
-
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult ApontamentoHoras()
         {
-            return View();
+            return RedirectToAction("Index", "ApontamentoHoras");
+        }
+
+        public IActionResult CadastrarFuncionario() 
+        {
+            return RedirectToAction("Index", "CadastrarFuncionario");
         }
     }
 }
