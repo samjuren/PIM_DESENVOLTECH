@@ -19,6 +19,7 @@
 </head>
 <body>
 
+    <link rel="stylesheet" href="~/css/teste.css">
     <aside class="menu-lateral">
         <header class="header-menu">
 
@@ -26,23 +27,37 @@
                 <i class="fa-solid fa-user"></i>
             </div>
 
-            <ul class="naveg">
-                <li>
-                    <a href="calcular-ferias.html"><i class="fa-solid fa-calculator"></i> Calcular férias</a>
-                </li>
-                <li>
-                    <a href="apontamento-de-horas.html"><i class="fa-solid fa-clock"></i> Apontamento de horas</a>
-                </li>
-                <li>
-                    <a href="relacao-de-ferias.html"><i class="fa-solid fa-umbrella-beach"></i> Relação de férias</a>
-                </li>
-                <li>
-                    <a href="cadastrar-funcionario.html"><i class="fa-solid fa-right-from-bracket"></i> Cadastrar funcionário</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
-                </li>
-            </ul>
+            <nav class="nav-menu">
+                <form>
+                    <button asp-action="CalculoPagamento">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span>Cálcular Pagamento</span>
+                    </button>
+
+                    <button asp-action="ApontamentoHoras">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Apontamento de horas</span>
+                    </button>
+
+                    <button asp-action="FeriasLateral">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                        <span>Relação de férias</span>
+                    </button>
+
+                    <button asp-action="CadastrarFuncionarioLateral">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Cadastrar funcionário</span>
+                    </button>
+
+                    <div class="log-out">
+                        <button asp-action="SairSistema">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>Sair</span>
+                        </button>
+                    </div>
+                </form>
+
+            </nav>
 
         </header>
     </aside>

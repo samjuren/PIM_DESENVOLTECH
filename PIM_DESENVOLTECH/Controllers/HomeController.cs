@@ -25,5 +25,18 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             return RedirectToAction("Index", "CadastrarFuncionario");
         }
+        public IActionResult FeriasLateral()
+        {
+            return RedirectToAction("Index", "Ferias");
+        }
+        public IActionResult CalculoPagamento()
+        {
+            return RedirectToAction("Index", "CalculoFolha");
+        }
+
+        public IActionResult SairSistema()
+        {
+            return RedirectToAction("Index", "Login");
+        }
     }
 }
