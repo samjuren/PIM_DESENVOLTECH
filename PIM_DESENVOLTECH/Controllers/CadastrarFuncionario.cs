@@ -43,6 +43,17 @@ namespace PIM_DESENVOLTECH.Controllers
 
             if (ModelState.IsValid)
             {
+                _context.Login.Add(new Login { 
+                    NomeLogin = NomeLogin,
+                    SenhaLogin = SenhaLogin,
+                    IsAdm = IsADM
+                });
+
+                _context.SaveChanges();
+
+
+                var id = _context.Login.FirstOrDefault(x => x.NomeLogin == NomeLogin).Id;
+
                 _context.Funcionario.Add(new Funcionario
                 {
                     CEP = CEP,
@@ -63,15 +74,11 @@ namespace PIM_DESENVOLTECH.Controllers
                     Salario = Salario,
                     NumeroRua = NumeroRua,
                     NomeRua = NomeRua,
+                    IdLogin = id
                 });
 
-                _context.Login.Add(new Login { 
-                    NomeLogin = NomeLogin,
-                    SenhaLogin = SenhaLogin,
-                    IsAdm = IsADM
-                });
 
-                _context.SaveChanges();
+
 
                 return RedirectToAction("Index", "CadastrarFuncionario");
             }
