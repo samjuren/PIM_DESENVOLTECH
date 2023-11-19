@@ -77,8 +77,7 @@ namespace PIM_DESENVOLTECH.Controllers
                     IdLogin = id
                 });
 
-
-
+                _context.SaveChanges();
 
                 return RedirectToAction("Index", "CadastrarFuncionario");
             }
