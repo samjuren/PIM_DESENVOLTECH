@@ -1,4 +1,4 @@
-﻿@model PIM_DESENVOLTECH.Models.Funcionario;
+﻿@model PIM_DESENVOLTECH.Models.Funcionario
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -158,7 +158,27 @@
                         <label for="">Cidade:</label>
                         <input asp-for="Cidade" name="Cidade" id="inpCidade" class="form-control" type="text">
                     </div>
-                     
+
+                    <hr />
+
+                    <h5>Cadastro Login</h5>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Nome de Acesso</label>
+                        <input asp-for="logins.NomeLogin" name="NomeLogin" id="inpNomeLogin" class="form-control" type="text">
+                    </div>
+
+                    <div class="col-md-3 fields">
+                        <label for="">Senha de Acesso</label>
+                        <input asp-for="logins.SenhaLogin" name="SenhaLogin" id="inpSenhaLogin" class="form-control" type="password">
+                    </div>
+
+                    <div class="col-md-1 fields">
+                            
+                        <input  asp-for="logins.IsAdm" name="IsADM" id="inpIsADM" class="form-control" type="checkbox">
+                    </div>
+
+
                     <div class="col-md-12 fields">
                         <button asp-action="CadastrarFuncionarioBanco" type="submit" class="btn btn-success float-right">Enviar</button>
                     </div>

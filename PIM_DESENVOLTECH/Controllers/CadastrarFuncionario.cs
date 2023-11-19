@@ -33,8 +33,11 @@ namespace PIM_DESENVOLTECH.Controllers
                                                         string Complemento, 
                                                         string Estado, 
                                                         string Cidade,
-                                                        string CEP
-                                                        
+                                                        string CEP,
+                                                        string NomeLogin,
+                                                        string SenhaLogin,
+                                                        bool IsADM
+
         )
         {
 
@@ -60,6 +63,12 @@ namespace PIM_DESENVOLTECH.Controllers
                     Salario = Salario,
                     NumeroRua = NumeroRua,
                     NomeRua = NomeRua,
+                });
+
+                _context.Login.Add(new Login { 
+                    NomeLogin = NomeLogin,
+                    SenhaLogin = SenhaLogin,
+                    IsAdm = IsADM
                 });
 
                 _context.SaveChanges();

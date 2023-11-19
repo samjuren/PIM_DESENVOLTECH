@@ -81,5 +81,9 @@ namespace PIM_DESENVOLTECH.Models
         [Column("NomeRua")]
         [Display(Name = "NomeRua")]
         public string? NomeRua { get; set; }
+
+        [Column("Login")]
+        [Display(Name = "Login")]
+        public Login? logins { get; set; }
     }
 }

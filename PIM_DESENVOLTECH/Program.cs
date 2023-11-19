@@ -9,7 +9,13 @@ builder.Services.AddControllersWithViews();
 //String de conexão com o SQL Server
 builder.Services.AddDbContext<Contexto>
     (
-        options => options.UseSqlServer("Data Source=SAMUEL\\SQLSERVER2022;Initial Catalog=DesenvolTech_PIM; Integrated Security=SSPI; TrustServerCertificate=True; Persist Security Info=False; User Id=SAMUEL\\sammj")
+        options => options.UseSqlServer(
+            "Data Source=SAMUEL\\SQLSERVER2022;" +
+            "Initial Catalog=DesenvolTech_PIM; " +
+            "Integrated Security=SSPI; " +
+            "TrustServerCertificate=True; " +
+            "Persist Security Info=False; " +
+            "User Id=SAMUEL\\sammj")
     );
 
 var app = builder.Build();
