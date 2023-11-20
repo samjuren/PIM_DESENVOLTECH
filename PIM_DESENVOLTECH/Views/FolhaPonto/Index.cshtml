@@ -68,13 +68,12 @@
 
     <main class="dados-content">
         <form id="registroForm" asp-action="CadastrarPonto">
-            <label for="nomeFuncionario">Nome do Funcionário:</label>
-            <input asp-for="NomeCompleto" type="text" id="nomeFuncionario" name="NomeCompleto" required autocomplete="name">
+            <div class="align-content-center">
+                <label for="nomeFuncionario">Nome do Funcionário:</label>
+                <input asp-for="NomeCompleto" type="text" id="nomeFuncionario" name="NomeCompleto" required autocomplete="name">
 
-            <label for="dataHoraRegistro">Data e Hora do Registro:</label>
-            <input type="datetime-local" id="dataHoraRegistro" name="dataHoraRegistro" required pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}">
-
-            <input type="submit" value="Registrar">
+                <button class="btn btn-success" type="submit">Cadastrar Hora</button>
+            </div>
         </form>
     </main>
 

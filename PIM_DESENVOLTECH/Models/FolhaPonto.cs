@@ -14,5 +14,9 @@ namespace PIM_DESENVOLTECH.Models
         [Column("HoraPonto")]
         [Display(Name = "Hora Ponto")]
         public DateTime HoraPonto { get; set; }
+
+        [Column("IdFuncionario")]
+        [Display(Name = "Código Funcionario")]
+        public int IdFuncionario { get; set; }
     }
 }
