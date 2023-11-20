@@ -96,6 +96,20 @@
     <div class="container mt-4">
         <h2 class="mb-4">Solicitar Férias</h2>
 
+        @if (!string.IsNullOrEmpty(TempData["MensagemErro"] as string))
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["MensagemErro"]
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(TempData["MensagemSucesso"] as string))
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["MensagemSucesso"]
+            </div>
+        }
+
         <form asp-action="SolicitarFerias" method="post">
             <div class="mb-3">
                 <label for="dataInicio" class="form-label">Data de Início:</label>
