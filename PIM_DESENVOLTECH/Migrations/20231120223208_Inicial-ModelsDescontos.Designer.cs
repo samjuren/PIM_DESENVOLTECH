@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PIM_DESENVOLTECH.Models;
 
@@ -11,9 +12,11 @@ using PIM_DESENVOLTECH.Models;
 namespace PIM_DESENVOLTECH.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231120223208_Inicial-ModelsDescontos")]
+    partial class InicialModelsDescontos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,41 +24,6 @@ namespace PIM_DESENVOLTECH.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.DescontosSalariais", b =>
-                {
-                    b.Property<int>("IdDesconto")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("IdDesconto");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDesconto"));
-
-                    b.Property<int>("FuncionarioIdFuncionario")
-                        .HasColumnType("int");
-
-                    b.Property<double>("INSS")
-                        .HasColumnType("float")
-                        .HasColumnName("INSS");
-
-                    b.Property<int>("IdFuncionario")
-                        .HasColumnType("int")
-                        .HasColumnName("FK_IdFuncionario");
-
-                    b.Property<double>("ImpostoDeRenda")
-                        .HasColumnType("float")
-                        .HasColumnName("ImpostoDeRenda");
-
-                    b.Property<double>("ValeTransporte")
-                        .HasColumnType("float")
-                        .HasColumnName("ValeTransporte");
-
-                    b.HasKey("IdDesconto");
-
-                    b.HasIndex("FuncionarioIdFuncionario");
-
-                    b.ToTable("descontosSalariais");
-                });
 
             modelBuilder.Entity("PIM_DESENVOLTECH.Models.FolhaPonto", b =>
                 {
@@ -207,17 +175,6 @@ namespace PIM_DESENVOLTECH.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Login");
-                });
-
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.DescontosSalariais", b =>
-                {
-                    b.HasOne("PIM_DESENVOLTECH.Models.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioIdFuncionario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Funcionario");
                 });
 
             modelBuilder.Entity("PIM_DESENVOLTECH.Models.Funcionario", b =>

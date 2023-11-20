@@ -13,12 +13,12 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Contexto>
     (
         options => options.UseSqlServer(
-            "Data Source=DESKtop01;" +
+            "Data Source=SAMUEL\\SQLSERVER2022;" +
             "Initial Catalog=DesenvolTech_PIM; " +
             "Integrated Security=SSPI; " +
             "TrustServerCertificate=True; " +
             "Persist Security Info=False; " +
-            "User Id=Matheus Borges")
+            "User Id=SAMUEL\\sammj")
 
     );
 
