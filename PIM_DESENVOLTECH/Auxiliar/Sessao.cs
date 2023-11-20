@@ -39,6 +39,11 @@ namespace PIM_DESENVOLTECH.Auxiliar
         {
             _httpContext.HttpContext.Session.SetString("sessaoUsuarioNome", nome);
         }
+
+        public void ChecarAdm(int id)
+        {
+            
+        }
     }
 }
 

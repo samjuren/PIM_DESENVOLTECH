@@ -16,11 +16,6 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             return View();
         }
-        public IActionResult ApontamentoHoras()
-        {
-            return RedirectToAction("Index", "ApontamentoHoras");
-        }
-
         public IActionResult CadastrarFuncionario() 
         {
             return RedirectToAction("Index", "CadastrarFuncionario");

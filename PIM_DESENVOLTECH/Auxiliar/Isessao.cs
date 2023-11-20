@@ -8,6 +8,7 @@ namespace PIM_DESENVOLTECH.Auxiliar
         void RemoverSessaoDoUsuario();
         Funcionario BuscarSessaoDoUsuario();
         void CriarSessaoDoUsuarioNome(string nome);
+        void ChecarAdm(int id);
 
     }
 }

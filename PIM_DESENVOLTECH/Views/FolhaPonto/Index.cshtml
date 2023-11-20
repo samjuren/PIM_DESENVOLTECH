@@ -32,14 +32,9 @@
                         <span>Cálcular Pagamento</span>
                     </button>
 
-                    <button asp-action="ApontamentoHoras">
-                        <i class="fa-solid fa-clock"></i>
-                        <span>Apontamento de horas</span>
-                    </button>
-
                     <button asp-action="FolhaPontoLateral">
                         <i class="fa-solid fa-clock"></i>
-                        <span>Folha de Ponto</span>
+                        <span>Registro de Ponto</span>
                     </button>
 
                     <button asp-action="FeriasLateral">
@@ -68,7 +63,7 @@
 
     <main class="dados-content">
         <form id="registroForm" asp-action="CadastrarPonto">
-            <div class="align-content-center">
+            <div >
                 <label for="nomeFuncionario">Nome do Funcionário:</label>
                 <input asp-for="NomeCompleto" type="text" id="nomeFuncionario" name="NomeCompleto" required autocomplete="name">
 
