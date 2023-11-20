@@ -19,6 +19,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/css/teste.css">
     <title>Home</title>
+
+    <script>
+        
+        function getCurrentDate() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+            return yyyy + '-' + mm + '-' + dd;
+        }
+
+        
+        function setMinDate() {
+            var dataInicioInput = document.getElementById('dataInicio');
+            dataInicioInput.min = getCurrentDate();
+        }
+
+        
+        window.onload = setMinDate;
+    </script>
+
+
 </head>
 
 <body>
@@ -65,9 +87,25 @@
     </aside>
 
 
-    <main class="dados-content">
-        <h1 class="tech">Desenvoltech</h1>
-    </main>
+
+    <div class="container mt-4">
+        <h2 class="mb-4">Solicitar Férias</h2>
+
+        <form asp-action="SolicitarFerias" method="post">
+            <div class="mb-3">
+                <label for="dataInicio" class="form-label">Data de Início:</label>
+                <input type="date" class="form-control" id="dataInicio" name="DataInicio" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="dataFim" class="form-label">Data de Término:</label>
+                <input type="date" class="form-control" id="dataFim" name="DataFim" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Solicitar Férias</button>
+        </form>
+    </div>
+
 
 </body>
 </html>

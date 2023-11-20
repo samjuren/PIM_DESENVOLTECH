@@ -105,12 +105,26 @@
                     </div>
                     <div class="col-md-3 fields">
                         <label for="">Cargo</label>
-                        <input asp-for="NomeCargo" name="NomeCargo" id="inpDepartamento" class="form-control" type="text">
+                        <select asp-for="NomeCargo" name="NomeCargo" id="selectCargo" class="form-control">
+                            <option value="Analista">Analista de TI</option>
+                            <option value="Analista Financeiro">Analista Financeiro</option>
+                            <option value="Desenvolvedor">Desenvolvedor-C#</option>
+                            <option value="Assistente">Assistente Geral</option>
+                            <option value="Advogado">Advogado</option>
+                            <option value="Porteiro">Porteiro</option>
+                            <option value="Gerente de RH">Gerente de RH</option>                  
+                        </select>
                     </div>
 
                     <div class="col-md-3 fields">
                         <label for="">Departamento</label>
-                        <input asp-for="Departamento" name="Departamento" id="inpDepartamento" class="form-control" type="text">
+                        <select asp-for="Departamento" name="Departamento" id="selectDepartamento" class="form-control">
+                            <option value="TI">TI</option>
+                            <option value="Recursos Humanos">Recursos Humanos</option>
+                            <option value="Marketing">Marketing</option>  
+                            <option value="Contabilidade">Contabilidade</option>
+                            <option value="Financeiro">Financeiro</option>
+                        </select>
                     </div>
 
                     <div class="col-md-3 fields">
@@ -151,7 +165,35 @@
 
                     <div class="col-md-3 fields">
                         <label for="">Estado:</label>
-                        <input asp-for="Estado" name="Estado" id="inpEstado" class="form-control" type="text">
+                        <select asp-for="Estado" name="Estado" id="inpEstado" class="form-control">
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
                     </div>
 
                     <div class="col-md-3 fields">
