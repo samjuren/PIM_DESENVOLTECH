@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Extensions.WebEncoders.Testing;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PIM_DESENVOLTECH.Models
@@ -98,4 +99,7 @@ namespace PIM_DESENVOLTECH.Models
         [Display(Name = "IdFolhaPonto")]
         public int IdFolhaPonto { get; set; }
     }
+
+   
+
 }

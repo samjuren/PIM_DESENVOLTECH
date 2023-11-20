@@ -15,6 +15,9 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             return View();
         }
+
+
+
         public IActionResult CadastrarFuncionarioLateral()
         {
             return RedirectToAction("Index", "CadastrarFuncionario");
