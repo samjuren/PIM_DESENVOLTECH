@@ -25,16 +25,11 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             Funcionario funcionario = _sessao.BuscarSessaoDoUsuario();
 
-<<<<<<< HEAD
             if (funcionario == null)
             {
                 TempData["MensagemErro"] = "Usuário não autenticado. Faça o login novamente.";
                 return RedirectToAction("Index", "Login");
             }
-=======
-        
->>>>>>> e80a731334abde6ede55aa9d26956a1270412b62
-
 
             int duracaoFerias = (int)(DataFim - DataInicio).TotalDays;
 
