@@ -24,9 +24,10 @@ namespace PIM_DESENVOLTECH.Controllers
            
 
             var login = _context.Login.FirstOrDefault(x =>
-                x.NomeLogin == Login &&
-                x.SenhaLogin == Senha
- );
+                                                            x.NomeLogin == Login 
+                                                            &&
+                                                            x.SenhaLogin == Senha
+                                                     );
 
             if (login == null)
             {
