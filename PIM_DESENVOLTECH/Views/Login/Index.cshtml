@@ -1,11 +1,9 @@
 ﻿@model PIM_DESENVOLTECH.Models.Login
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
     Layout = "_LayoutDeslogada";
     ViewData["Title"] = "Login";
 }
+
 <div class="page">
     <link rel="stylesheet" href="~/css/Login.css">
 
@@ -14,14 +12,24 @@
             <h1 class="tech">Desenvoltech</h1>
         </div>
         <div class="forms-img">
-            <form class="formulario">
+            <form class="formulario" method="post" asp-action="ChecarUsuario">
                 <fieldset class="form-content">
                     <legend>Faça o login com sua conta</legend>
 
-                    <label  class="label">E-mail</label>
+                    @{
+                        var mensagemErro = TempData["MensagemErro"] as string;
+                    }
+                    @if (!string.IsNullOrEmpty(mensagemErro))
+                    {
+                        <div class="alert alert-danger">
+                            @mensagemErro
+                        </div>
+                    }
+
+                    <label class="label">E-mail</label>
                     <input type="text" asp-for="NomeLogin" class="input-group fadeIn second" name="Login" placeholder="login">
 
-                    <label for="senha" class="label">Senha</label>                    
+                    <label for="senha" class="label">Senha</label>
                     <input type="password" asp-for="SenhaLogin" class="input-group fadeIn third" name="Senha" placeholder="password">
 
                     <div class="btns-form">
@@ -32,12 +40,12 @@
                         <a href="#">Esqueceu sua senha?</a>
                     </div>
 
-                    <button asp-action="ChecarUsuario" class="btn-form">Entrar</button>
-    
+                    <button type="submit" class="btn-form">Entrar</button>
+
                 </fieldset>
             </form>
             <div class="logo">
-                <img src="images/Captura_de_tela_2023-06-14_220520-removebg-preview.png" alt="">
+                <img src="~/css/login.png" alt="">
             </div>
         </div>
     </main>

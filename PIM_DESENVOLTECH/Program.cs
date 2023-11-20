@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using PIM_DESENVOLTECH.Auxiliar;
 using PIM_DESENVOLTECH.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,13 +13,24 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Contexto>
     (
         options => options.UseSqlServer(
-            "Data Source=SAMUEL\\SQLSERVER2022;" +
+            "Data Source=DESKtop01;" +
             "Initial Catalog=DesenvolTech_PIM; " +
             "Integrated Security=SSPI; " +
             "TrustServerCertificate=True; " +
             "Persist Security Info=False; " +
-            "User Id=SAMUEL\\sammj")
+            "User Id=Matheus Borges")
     );
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<Isessao, Sessao>();
+
+builder.Services.AddSession(o => 
+{
+    o.Cookie.HttpOnly = true;
+    o.Cookie.IsEssential = true;
+
+});
+
 
 var app = builder.Build();
 
@@ -30,11 +44,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}/{id?}");

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.WebEncoders.Testing;
 using PIM_DESENVOLTECH.Models;
 
 namespace PIM_DESENVOLTECH.Controllers
@@ -11,10 +12,15 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
             return View();
         }
+
+
+      
+
 
         public IActionResult CadastrarFuncionarioLateral()
         {
