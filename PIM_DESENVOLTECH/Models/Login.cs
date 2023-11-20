@@ -24,5 +24,7 @@ namespace PIM_DESENVOLTECH.Models
         [Column("IsAdm")]
         [Display(Name = "IsAdm")]
         public bool IsAdm { get; set; }
+
+        
     }
 }

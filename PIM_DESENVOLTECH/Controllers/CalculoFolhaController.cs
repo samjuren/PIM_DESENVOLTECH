@@ -13,7 +13,10 @@ namespace PIM_DESENVOLTECH.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+          var funcionario = _context.Funcionario.ToList();
+            
+
+            return View(funcionario);
         }
 
 

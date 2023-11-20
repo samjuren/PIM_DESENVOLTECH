@@ -49,8 +49,7 @@ namespace PIM_DESENVOLTECH.Controllers
                 TempData["MensagemErro"] = "A duração das férias deve ser entre 5 e 30 dias.";
             }
 
-            
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Ferias");
         }
 
     

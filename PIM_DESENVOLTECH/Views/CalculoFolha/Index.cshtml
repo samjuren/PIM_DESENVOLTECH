@@ -1,4 +1,4 @@
-﻿@model PIM_DESENVOLTECH.Models.Funcionario;
+﻿@model List<Funcionario> 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -71,16 +71,38 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var funcionario in model)
+            @foreach (var funcionario in Model)
             {
-                
+                <tr>
+                    <td>@funcionario.NomeCompleto</td>
+                    <td>@funcionario.Departamento</td>
+                    <td>@funcionario.NomeCargo</td>
+                    <td>@funcionario.Salario</td>
+                    <td>@funcionario.DataAdmissao</td>
+                </tr>
             }
         </tbody>
-            
     </table>
+
+    <div class="text-center">
+        <button asp-action="GerarFolhaPagamento" class="btn btn-success">Gerar Folha de Pagamento</button>
+    </div>
 
 
 
 
 </body>
 </html>
+
+<style>
+        table {
+            width: 80%;
+            margin-bottom: 20px; 
+        }
+
+        /* Estilos para a div com o botão */
+        .text-center {
+            text-align: right;
+            margin-top: 20px; 
+        }
+    </style>
