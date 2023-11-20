@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PIM_DESENVOLTECH.Models
 {
@@ -89,5 +89,13 @@ namespace PIM_DESENVOLTECH.Models
         [Column("Login")]
         [Display(Name = "Login")]
         public int IdLogin { get; set; }
+
+        [Column("FolhaPonto")]
+        [Display(Name = "FolhaPonto")]
+        public FolhaPonto? FolhaPonto { get; set; }
+
+        [Column("IdFolhaPonto")]
+        [Display(Name = "IdFolhaPonto")]
+        public int IdFolhaPonto { get; set; }
     }
 }

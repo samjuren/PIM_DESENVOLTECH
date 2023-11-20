@@ -19,7 +19,7 @@ namespace PIM_DESENVOLTECH.Controllers
         }
 
 
-      
+        
 
 
         public IActionResult CadastrarFuncionarioLateral()
