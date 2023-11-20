@@ -19,6 +19,13 @@ namespace PIM_DESENVOLTECH.Controllers
             return View(funcionario);
         }
 
+        public IActionResult VisualizarDesconto()
+        {
+            return View("Descontos", "CalculoFolha");
+         
+        
+        }
+       
 
 
         public IActionResult CadastrarFuncionarioLateral()
