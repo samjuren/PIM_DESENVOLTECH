@@ -52,7 +52,7 @@ namespace PIM_DESENVOLTECH.Controllers
                 _context.SaveChanges();
 
                 var id = _context.Login.FirstOrDefault(x => x.NomeLogin == NomeLogin).Id;
-
+                
                 _context.Funcionario.Add(new Funcionario
                 {
                     CEP = CEP,

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.WebEncoders.Testing;
 using PIM_DESENVOLTECH.Auxiliar;
 using PIM_DESENVOLTECH.Models;
+using System.Collections.Generic;
 
 namespace PIM_DESENVOLTECH.Controllers
 {
@@ -18,10 +19,13 @@ namespace PIM_DESENVOLTECH.Controllers
 
         public IActionResult Index()
         {
-            Login login = _sessao.BuscarSessaoDoUsuario();
-            List<RelacaoFerias> list = new List<RelacaoFerias>();
+            return View();
+        }
 
-            list.Where(x => x.IdFuncionario == login.Id);
+        public IActionResult VerFeriasGerais(string Nome)
+        {
+            var list = _context.RelacaoFerias.ToList().Where(x => x.Funcionario.NomeCompleto == Nome);
+
             return View(list);
         }
 
@@ -58,11 +62,14 @@ namespace PIM_DESENVOLTECH.Controllers
 
             var id = login.Id;
 
+            Funcionario funcionario = _context.Funcionario.FirstOrDefault(x => x.IdLogin == id);
+
             _context.RelacaoFerias.Add(new RelacaoFerias 
             {
                 FeriasInicio = DataInicio,
                 FeriasFim = DataFim,
-                IdFuncionario = id
+                IdFuncionario = id,
+                Funcionario = funcionario
             });
 
             _context.SaveChanges(); 

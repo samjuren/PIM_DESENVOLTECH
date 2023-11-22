@@ -28,7 +28,6 @@ namespace PIM_DESENVOLTECH.Controllers
                                                             &&
                                                             x.SenhaLogin == Senha
                                                      );
-
             if (login == null)
             {
 
@@ -37,15 +36,21 @@ namespace PIM_DESENVOLTECH.Controllers
             }
             else
             {
+                //pega o Id do Login
                 var LoginId = _context.Login.FirstOrDefault(f => f.Id == login.Id);
 
-                var nomeCompleto = _context.Funcionario.FirstOrDefault(x => x.IdLogin == login.Id)?.NomeCompleto;
+                //Acha o funcionario pelo Id do Login
+                var funcionario = _context.Funcionario.FirstOrDefault(x => x.IdLogin == login.Id);
                 
                 if (LoginId != null)
                 {
                     _sessao.CriarSessaoDoUsuario(LoginId);
-                    _sessao.CriarSessaoDoUsuarioNome(nomeCompleto);
+                    _sessao.CriarSessaoDoUsuarioNome(funcionario.NomeCompleto);
                 }
+
+                //atualizar a FK do Login na Model Funcionario
+                var atualizarFk = funcionario.logins = LoginId;
+                _context.SaveChanges();
 
                 return RedirectToAction("Index", "Home");
             }

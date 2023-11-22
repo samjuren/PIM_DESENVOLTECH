@@ -20,7 +20,6 @@ namespace PIM_DESENVOLTECH.Controllers
             return View();
         }
 
-
         public IActionResult CadastrarPonto(string NomeCompleto, DateTime dataHoraRegistro)
         {
             var nomefunc = _context.Funcionario.FirstOrDefault(x => x.NomeCompleto == NomeCompleto);
@@ -37,10 +36,14 @@ namespace PIM_DESENVOLTECH.Controllers
                     IdFuncionario = nomefunc.IdFuncionario
                 });
 
+                var IdFolhaPonto = _context.FolhaPonto.FirstOrDefault(x => x.IdFuncionario == nomefunc.IdFuncionario);
+
+                nomefunc.FolhaPonto = IdFolhaPonto;
+                nomefunc.IdFolhaPonto = IdFolhaPonto.IdFolhaPonto;
+
                 _context.SaveChanges();
             }
 
-            var teste = _context.FolhaPonto.Where(x => x.IdFuncionario == nomefunc.IdFuncionario);
 
             return RedirectToAction("Index", "FolhaPonto");
         }
