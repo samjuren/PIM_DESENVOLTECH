@@ -37,12 +37,14 @@ namespace PIM_DESENVOLTECH.Controllers
             }
             else
             {
-                var funcionario = _context.Funcionario.FirstOrDefault(f => f.IdLogin == login.Id);
+                var LoginId = _context.Login.FirstOrDefault(f => f.Id == login.Id);
 
-                if (funcionario != null)
+                var nomeCompleto = _context.Funcionario.FirstOrDefault(x => x.IdLogin == login.Id)?.NomeCompleto;
+                
+                if (LoginId != null)
                 {
-                    _sessao.CriarSessaoDoUsuario(funcionario);
-                    _sessao.CriarSessaoDoUsuarioNome(funcionario.NomeCompleto);
+                    _sessao.CriarSessaoDoUsuario(LoginId);
+                    _sessao.CriarSessaoDoUsuarioNome(nomeCompleto);
                 }
 
                 return RedirectToAction("Index", "Home");

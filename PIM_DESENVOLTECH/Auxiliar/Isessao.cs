@@ -4,9 +4,9 @@ namespace PIM_DESENVOLTECH.Auxiliar
 {
     public interface Isessao
     {
-        void CriarSessaoDoUsuario(Funcionario funcionario);
+        void CriarSessaoDoUsuario(Login login);
         void RemoverSessaoDoUsuario();
-        Funcionario BuscarSessaoDoUsuario();
+        Login BuscarSessaoDoUsuario();
         void CriarSessaoDoUsuarioNome(string nome);
         void ChecarAdm(int id);
 

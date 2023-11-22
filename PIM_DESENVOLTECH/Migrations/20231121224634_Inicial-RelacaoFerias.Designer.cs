@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PIM_DESENVOLTECH.Models;
 
@@ -11,9 +12,11 @@ using PIM_DESENVOLTECH.Models;
 namespace PIM_DESENVOLTECH.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231121224634_Inicial-RelacaoFerias")]
+    partial class InicialRelacaoFerias
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,37 +212,6 @@ namespace PIM_DESENVOLTECH.Migrations
                     b.ToTable("Login");
                 });
 
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.RelacaoFerias", b =>
-                {
-                    b.Property<int>("IdFerias")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("IdFerias");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdFerias"));
-
-                    b.Property<DateTime>("FeriasFim")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("FeriasFim");
-
-                    b.Property<DateTime>("FeriasInicio")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("FeriasInicio");
-
-                    b.Property<int?>("FuncionarioIdFuncionario")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdFuncionario")
-                        .HasColumnType("int")
-                        .HasColumnName("FK_IdFuncionario");
-
-                    b.HasKey("IdFerias");
-
-                    b.HasIndex("FuncionarioIdFuncionario");
-
-                    b.ToTable("RelacaoFerias");
-                });
-
             modelBuilder.Entity("PIM_DESENVOLTECH.Models.DescontosSalariais", b =>
                 {
                     b.HasOne("PIM_DESENVOLTECH.Models.Funcionario", "Funcionario")
@@ -264,15 +236,6 @@ namespace PIM_DESENVOLTECH.Migrations
                     b.Navigation("FolhaPonto");
 
                     b.Navigation("logins");
-                });
-
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.RelacaoFerias", b =>
-                {
-                    b.HasOne("PIM_DESENVOLTECH.Models.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioIdFuncionario");
-
-                    b.Navigation("Funcionario");
                 });
 #pragma warning restore 612, 618
         }

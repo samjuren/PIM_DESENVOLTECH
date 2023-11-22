@@ -13,13 +13,13 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             _context = context;
             _sessao = isessao;
-
         }
 
         public IActionResult Index()
         {
             return View();
         }
+
 
         public IActionResult CadastrarPonto(string NomeCompleto, DateTime dataHoraRegistro)
         {
@@ -39,6 +39,8 @@ namespace PIM_DESENVOLTECH.Controllers
 
                 _context.SaveChanges();
             }
+
+            var teste = _context.FolhaPonto.Where(x => x.IdFuncionario == nomefunc.IdFuncionario);
 
             return RedirectToAction("Index", "FolhaPonto");
         }

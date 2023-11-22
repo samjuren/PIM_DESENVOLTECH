@@ -1,14 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model PIM_DESENVOLTECH.Models.Funcionario;
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model PIM_DESENVOLTECH.Models.RelacaoFerias;
+@* @model List<RelacaoFerias>; *@
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -108,16 +100,39 @@
         <form asp-action="SolicitarFerias" method="post">
             <div class="mb-3">
                 <label for="dataInicio" class="form-label">Data de Início:</label>
-                <input type="date" class="form-control" id="dataInicio" name="DataInicio" required>
+                <input asp-for="FeriasInicio" type="date" class="form-control" id="dataInicio" name="DataInicio" required>
             </div>
 
             <div class="mb-3">
                 <label for="dataFim" class="form-label">Data de Término:</label>
-                <input type="date" class="form-control" id="dataFim" name="DataFim" required>
+                <input asp-for="FeriasFim" type="date" class="form-control" id="dataFim" name="DataFim" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Solicitar Férias</button>
+            <button type="submit" class="btn btn-primary" asp-action="CadastrarFerias">Solicitar Férias</button>
+        
+            <hr class="mt-5" />
+
+            <h5>Relação de Férias Funcionario</h5>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Nome Funcioanrio</td>
+                        <td>Data Inicial Férias</td>
+                        <td>Data Final Férias</td>
+                    </tr>
+                </thead>
+                <tbody>
+@*                     @foreach(var item in Model)
+                    {
+                        
+                    } *@
+                </tbody>
+            </table>
         </form>
+
+
+
     </div>
 
 

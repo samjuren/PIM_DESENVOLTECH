@@ -14,19 +14,14 @@ namespace PIM_DESENVOLTECH.Controllers
         public IActionResult Index()
         {
           var funcionario = _context.Funcionario.ToList();
-            
 
             return View(funcionario);
         }
 
-        public IActionResult VisualizarDesconto()
+        public IActionResult VisualizarDesconto(int id,double INSS, double ImpostoDeRenda, double ValeTransporte)
         {
             return View("Descontos", "CalculoFolha");
-         
-        
         }
-       
-
 
         public IActionResult CadastrarFuncionarioLateral()
         {

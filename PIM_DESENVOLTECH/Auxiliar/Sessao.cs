@@ -13,18 +13,18 @@ namespace PIM_DESENVOLTECH.Auxiliar
             _httpContext = httpContext;
         }
 
-        public Funcionario BuscarSessaoDoUsuario()
+        public Login BuscarSessaoDoUsuario()
         {
             string sessaoUsuario = _httpContext.HttpContext.Session.GetString("sessaoUsuarioLogado");
 
             if (string.IsNullOrEmpty(sessaoUsuario)) return null;
 
-            return JsonConvert.DeserializeObject<Funcionario>(sessaoUsuario);
+            return JsonConvert.DeserializeObject<Login>(sessaoUsuario);
         }
         /// estou usando 
-        public void CriarSessaoDoUsuario(Funcionario funcionario)
+        public void CriarSessaoDoUsuario(Login login)
         {
-            string valor = JsonConvert.SerializeObject(funcionario);
+            string valor = JsonConvert.SerializeObject(login);
             _httpContext.HttpContext.Session.SetString("sessaoUsuarioLogado", valor);
         }
 
