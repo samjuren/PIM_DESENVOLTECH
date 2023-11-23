@@ -26,7 +26,7 @@ namespace PIM_DESENVOLTECH.Controllers
                                                         int Idade, 
                                                         string NomeCargo, 
                                                         string Departamento, 
-                                                        string Salario, 
+                                                        double Salario, 
                                                         DateTime DataAdmissao, 
                                                         string NomeRua,
                                                         int NumeroRua,

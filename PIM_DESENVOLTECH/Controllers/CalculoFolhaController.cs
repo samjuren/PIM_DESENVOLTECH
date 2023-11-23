@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PIM_DESENVOLTECH.GerarFolhaServices;
 using PIM_DESENVOLTECH.Models;
 
 namespace PIM_DESENVOLTECH.Controllers
@@ -6,16 +7,27 @@ namespace PIM_DESENVOLTECH.Controllers
     public class CalculoFolhaController : Controller
     {
         private readonly Contexto _context;
+        private readonly GerarFolha _gerarFolha;
 
-        public CalculoFolhaController(Contexto context)
+        public CalculoFolhaController(Contexto context, GerarFolha gerarFolha)
         {
             _context = context;
+            _gerarFolha = gerarFolha;
         }
         public IActionResult Index()
         {
           var funcionario = _context.Funcionario.ToList();
 
             return View(funcionario);
+        }
+        //teste
+
+        public IActionResult GerarFolhaPagamento()
+        {
+            _gerarFolha.CalcularFolha();
+
+            var funcionarios = _context.Funcionario.ToList();
+            return View("Index", funcionarios);
         }
 
         public IActionResult VisualizarDesconto(int id,double INSS, double ImpostoDeRenda, double ValeTransporte)

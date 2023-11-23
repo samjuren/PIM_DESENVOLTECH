@@ -6,6 +6,13 @@ namespace PIM_DESENVOLTECH.Models
 {
     public class Funcionario
     {
+        public Funcionario()
+        {
+            Descontos = new DescontosSalariais();
+
+        }    
+
+
         [Column("IdFuncionario")]
         [Display(Name = "Código Funcionario")]
         [Key]
@@ -17,7 +24,7 @@ namespace PIM_DESENVOLTECH.Models
 
         [Column("Salario")]
         [Display(Name = "Salario")]
-        public string? Salario { get; set; }
+        public double Salario { get; set; }
 
         [Column("DataAdmissao")]
         [Display(Name = "Data Admissão")]
@@ -98,5 +105,22 @@ namespace PIM_DESENVOLTECH.Models
         [Column("FK_IdFolhaPonto")]
         [Display(Name = "IdFolhaPonto")]
         public int IdFolhaPonto { get; set; }
+
+        [NotMapped] // obs: quando roda Migration esse carinha nao vai p Banco
+        public bool FolhaPagamentoConfirmada { get; set; }
+
+        [NotMapped]
+        public DescontosSalariais Descontos { get; set; }
+
+        public void CalcularDesconto()
+        {
+            Descontos.ValeTransporte = Salario * 0.06; ;// breno que me passou esses dados fixo 
+            Descontos.INSS = Salario * 0.08;
+            Descontos.ImpostoDeRenda = Salario * 0.15;
+
+           Salario -= (Descontos.ValeTransporte + Descontos.INSS + Descontos.ImpostoDeRenda);
+        }
     }
+
+    
 }
