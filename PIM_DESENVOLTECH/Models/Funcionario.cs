@@ -6,6 +6,13 @@ namespace PIM_DESENVOLTECH.Models
 {
     public class Funcionario
     {
+        public Funcionario()
+        {
+            Descontos = new DescontosSalariais();
+
+        }    
+
+
         [Column("IdFuncionario")]
         [Display(Name = "Código Funcionario")]
         [Key]
@@ -17,7 +24,7 @@ namespace PIM_DESENVOLTECH.Models
 
         [Column("Salario")]
         [Display(Name = "Salario")]
-        public string? Salario { get; set; }
+        public double Salario { get; set; }
 
         [Column("DataAdmissao")]
         [Display(Name = "Data Admissão")]
@@ -91,4 +98,6 @@ namespace PIM_DESENVOLTECH.Models
         [Display(Name = "Login")]
         public int IdLogin { get; set; }
     }
+
+    
 }

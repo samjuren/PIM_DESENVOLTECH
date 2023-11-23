@@ -27,7 +27,10 @@ namespace PIM_DESENVOLTECH.Models
         public double INSS { get; set; }
 
         [Column("ImpostoDeRenda")]
-        [Display(Name = "ImpostoDeRenda")]
+        [Display(Name = "ImpostoDeRenda")] 
         public double ImpostoDeRenda { get; set; }
+
+        
+
     }
 }

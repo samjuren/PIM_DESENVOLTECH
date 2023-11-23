@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PIM_DESENVOLTECH.Models;
 
@@ -11,9 +12,11 @@ using PIM_DESENVOLTECH.Models;
 namespace PIM_DESENVOLTECH.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231123013656_Inicial-TesteMatheus")]
+    partial class InicialTesteMatheus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,13 +69,6 @@ namespace PIM_DESENVOLTECH.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdFolhaPonto"));
 
-                    b.Property<int>("FK_Funcionario")
-                        .HasColumnType("int")
-                        .HasColumnName("FK_IdFuncionario");
-
-                    b.Property<int?>("FuncionarioIdFuncionario")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("HoraPonto")
                         .HasColumnType("datetime2")
                         .HasColumnName("HoraPonto");
@@ -82,8 +78,6 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnName("IdFuncionario");
 
                     b.HasKey("IdFolhaPonto");
-
-                    b.HasIndex("FuncionarioIdFuncionario");
 
                     b.ToTable("FolhaPonto");
                 });
@@ -133,9 +127,16 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Estado");
 
+                    b.Property<int?>("FolhaPontoIdFolhaPonto")
+                        .HasColumnType("int");
+
                     b.Property<bool>("FuncionarioAtivo")
                         .HasColumnType("bit")
                         .HasColumnName("FuncionarioAtivo");
+
+                    b.Property<int>("IdFolhaPonto")
+                        .HasColumnType("int")
+                        .HasColumnName("FK_IdFolhaPonto");
 
                     b.Property<int>("IdLogin")
                         .HasColumnType("int")
@@ -177,6 +178,8 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("IdFuncionario");
+
+                    b.HasIndex("FolhaPontoIdFolhaPonto");
 
                     b.HasIndex("loginsId");
 
@@ -251,20 +254,17 @@ namespace PIM_DESENVOLTECH.Migrations
                     b.Navigation("Funcionario");
                 });
 
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.FolhaPonto", b =>
-                {
-                    b.HasOne("PIM_DESENVOLTECH.Models.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioIdFuncionario");
-
-                    b.Navigation("Funcionario");
-                });
-
             modelBuilder.Entity("PIM_DESENVOLTECH.Models.Funcionario", b =>
                 {
+                    b.HasOne("PIM_DESENVOLTECH.Models.FolhaPonto", "FolhaPonto")
+                        .WithMany()
+                        .HasForeignKey("FolhaPontoIdFolhaPonto");
+
                     b.HasOne("PIM_DESENVOLTECH.Models.Login", "logins")
                         .WithMany()
                         .HasForeignKey("loginsId");
+
+                    b.Navigation("FolhaPonto");
 
                     b.Navigation("logins");
                 });
