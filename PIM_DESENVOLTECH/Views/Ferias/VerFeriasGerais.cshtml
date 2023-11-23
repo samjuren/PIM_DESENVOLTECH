@@ -1,4 +1,6 @@
-﻿@model List<RelacaoFerias>;
+﻿@using PIM_DESENVOLTECH.ViewModels
+
+@model FeriasFuncionarioViewData
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -65,8 +67,8 @@
         <h2>Relção de Férias</h2>
 
         <form>
-            <input placeholder="Digite o nome do funcionario"/>
-            <button>Buscar</button>
+            <input asp-for="funcionario.NomeCompleto" name="Nome" placeholder="Digite o nome do funcionario"/>
+            <button asp-action="BuscarFeriasFuncionario">Buscar</button>
         </form>
 
         <table class="table" style="margin-top: 266px;margin-left: 68px;">
@@ -80,7 +82,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.feriasList)
                 {
                     <tr>
                         <td></td>

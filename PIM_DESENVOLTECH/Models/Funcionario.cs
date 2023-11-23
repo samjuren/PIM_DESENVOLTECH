@@ -90,13 +90,5 @@ namespace PIM_DESENVOLTECH.Models
         [Column("FK_IdLogin")]
         [Display(Name = "Login")]
         public int IdLogin { get; set; }
-
-        [Column("FK_FolhaPonto")]
-        [Display(Name = "FolhaPonto")]
-        public FolhaPonto? FolhaPonto { get; set; }
-
-        [Column("FK_IdFolhaPonto")]
-        [Display(Name = "IdFolhaPonto")]
-        public int IdFolhaPonto { get; set; }
     }
 }

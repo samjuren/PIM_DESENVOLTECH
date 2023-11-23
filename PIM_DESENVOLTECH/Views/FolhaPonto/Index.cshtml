@@ -1,9 +1,6 @@
-﻿@model PIM_DESENVOLTECH.Models.Funcionario;
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using PIM_DESENVOLTECH.ViewModels
+
+@model FuncionarioViewData
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -63,14 +60,36 @@
 
     <main class="dados-content">
         <form id="registroForm" asp-action="CadastrarPonto">
-            <div >
-                <label for="nomeFuncionario">Nome do Funcionário:</label>
-                <input asp-for="NomeCompleto" type="text" id="nomeFuncionario" name="NomeCompleto" required autocomplete="name">
+            <div style="margin: 280px;">               
+                <input asp-for="folhaPonto.Funcionario.NomeCompleto" class="form-control" type="text" id="nomeFuncionario" name="NomeCompleto" required autocomplete="name" placeholder="Digite o nome do Funcionario">
 
-                <button class="btn btn-success" type="submit">Cadastrar Hora</button>
+                <button class="btn btn-success mt-4" style="margin-left: 170px" type="submit">Bater Ponto</button>
             </div>
         </form>
+
+        <table class="table" style="margin-top: 266px;margin-left: 68px;">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data Ponto</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.folhaPontoList)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@item.Funcionario.NomeCompleto</td>
+                        <td>@item.HoraPonto</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
     </main>
+
+
 
 </body>
 </html>

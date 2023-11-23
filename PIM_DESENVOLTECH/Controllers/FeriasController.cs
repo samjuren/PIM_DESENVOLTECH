@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.WebEncoders.Testing;
 using PIM_DESENVOLTECH.Auxiliar;
 using PIM_DESENVOLTECH.Models;
+using PIM_DESENVOLTECH.ViewModels;
 using System.Collections.Generic;
 
 namespace PIM_DESENVOLTECH.Controllers
@@ -22,11 +24,28 @@ namespace PIM_DESENVOLTECH.Controllers
             return View();
         }
 
-        public IActionResult VerFeriasGerais(string Nome)
-        {
-            var list = _context.RelacaoFerias.ToList().Where(x => x.Funcionario.NomeCompleto == Nome);
+        public IActionResult VerFeriasGerais()
+        {    
+            var list = _context.RelacaoFerias.ToList().AsQueryable();
+            var func = _context.Funcionario.ToList().AsQueryable();
 
-            return View(list);
+            FeriasFuncionarioViewData ff = new FeriasFuncionarioViewData();
+
+            ff.feriasList = list;
+            ff.funcionarioList = func;
+
+            return View(ff);
+        }
+
+        public IActionResult BuscarFeriasFuncionario(string Nome)
+        {
+            var list = _context.RelacaoFerias.Where(x => x.Funcionario.NomeCompleto == Nome);
+
+            FeriasFuncionarioViewData ff = new FeriasFuncionarioViewData();
+
+            ff.feriasList = list;
+
+            return View(VerFeriasGerais());
         }
 
         public IActionResult SolicitarFerias(DateTime DataInicio, DateTime DataFim)
@@ -60,15 +79,13 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             Login login = _sessao.BuscarSessaoDoUsuario();
 
-            var id = login.Id;
-
-            Funcionario funcionario = _context.Funcionario.FirstOrDefault(x => x.IdLogin == id);
+            Funcionario funcionario = _context.Funcionario.FirstOrDefault(x => x.IdLogin == login.Id);
 
             _context.RelacaoFerias.Add(new RelacaoFerias 
             {
                 FeriasInicio = DataInicio,
                 FeriasFim = DataFim,
-                IdFuncionario = id,
+                IdFuncionario = login.Id,
                 Funcionario = funcionario
             });
 
