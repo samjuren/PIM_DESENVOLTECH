@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.PathSegments;
 using PIM_DESENVOLTECH.Auxiliar;
 using PIM_DESENVOLTECH.Models;
+using PIM_DESENVOLTECH.ViewModels;
 
 namespace PIM_DESENVOLTECH.Controllers
 {
@@ -17,14 +19,26 @@ namespace PIM_DESENVOLTECH.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            Login login = _sessao.BuscarSessaoDoUsuario();
+
+            var funcionario = _context.Funcionario.FirstOrDefault(x => x.IdLogin == login.Id).IdFuncionario;
+
+            var listFuncionario = _context.Funcionario.Where(x => x.IdLogin == login.Id);
+
+            var listFolhaPonto = _context.FolhaPonto.Where(x => x.IdFuncionario == funcionario);
+
+            FuncionarioViewData fvd = new FuncionarioViewData();
+
+            return View(fvd);
         }
 
         public IActionResult CadastrarPonto(string NomeCompleto, DateTime dataHoraRegistro)
         {
-            var nomefunc = _context.Funcionario.FirstOrDefault(x => x.NomeCompleto == NomeCompleto);
+            Login login = _sessao.BuscarSessaoDoUsuario();
 
-            if (nomefunc == null)
+            var func = _context.Funcionario.FirstOrDefault(x => x.IdLogin == login.Id);
+
+            if (func == null)
             {
                 //retorna mensagem erro
             }
@@ -33,17 +47,16 @@ namespace PIM_DESENVOLTECH.Controllers
                 _context.FolhaPonto.Add(new FolhaPonto
                 {
                     HoraPonto = DateTime.Now,
-                    IdFuncionario = nomefunc.IdFuncionario
+                    IdFuncionario = func.IdFuncionario
                 });
 
-                var IdFolhaPonto = _context.FolhaPonto.FirstOrDefault(x => x.IdFuncionario == nomefunc.IdFuncionario);
+                var IdFolhaPonto = _context.FolhaPonto.FirstOrDefault(x => x.IdFuncionario == func.IdFuncionario);
 
-                nomefunc.FolhaPonto = IdFolhaPonto;
-                nomefunc.IdFolhaPonto = IdFolhaPonto.IdFolhaPonto;
+                //func.FolhaPonto = IdFolhaPonto;
+                //func.IdFolhaPonto = IdFolhaPonto.IdFolhaPonto;
 
                 _context.SaveChanges();
             }
-
 
             return RedirectToAction("Index", "FolhaPonto");
         }

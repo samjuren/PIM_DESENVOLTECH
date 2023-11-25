@@ -18,5 +18,13 @@ namespace PIM_DESENVOLTECH.Models
         [Column("IdFuncionario")]
         [Display(Name = "Código Funcionario")]
         public int IdFuncionario { get; set; }
+
+        [Column("FK_Funcionario")]
+        [Display(Name = "FK_Funcionario")]
+        public Funcionario? Funcionario { get; set; }
+
+        [Column("FK_IdFuncionario")]
+        [Display(Name = "FK_Funcionario")]
+        public int FK_Funcionario { get; set; }
     }
 }

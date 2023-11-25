@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.WebEncoders.Testing;
+﻿using Microsoft.Extensions.WebEncoders.Testing;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -98,34 +97,6 @@ namespace PIM_DESENVOLTECH.Models
         [Column("FK_IdLogin")]
         [Display(Name = "Login")]
         public int IdLogin { get; set; }
-
-        [Column("FK_FolhaPonto")]
-        [Display(Name = "FolhaPonto")]
-        public FolhaPonto? FolhaPonto { get; set; }
-
-        [Column("FK_IdFolhaPonto")]
-        [Display(Name = "IdFolhaPonto")]
-        public int IdFolhaPonto { get; set; }
-
-        [NotMapped] // obs: quando roda Migration esse carinha nao vai p Banco
-        public bool FolhaPagamentoConfirmada { get; set; }
-
-        [NotMapped]
-        public DescontosSalariais Descontos { get; set; }
-
-        [ForeignKey("Descontos")]
-        
-        public int DescontosId { get; set; }
-
-
-        public void CalcularDesconto()
-        {
-            Descontos.ValeTransporte = Salario * 0.06; ;// breno que me passou esses dados fixo 
-            Descontos.INSS = Salario * 0.08;
-            Descontos.ImpostoDeRenda = Salario * 0.15;
-
-           Salario -= (Descontos.ValeTransporte + Descontos.INSS + Descontos.ImpostoDeRenda);
-        }
     }
 
     

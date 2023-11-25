@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PIM_DESENVOLTECH.Models;
 
@@ -11,9 +12,11 @@ using PIM_DESENVOLTECH.Models;
 namespace PIM_DESENVOLTECH.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231123231222_Inicial-AjusteFuncionario")]
+    partial class InicialAjusteFuncionario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,9 +128,6 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Departamento");
 
-                    b.Property<int>("DescontosId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Email");
@@ -172,8 +172,8 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("RG");
 
-                    b.Property<double>("Salario")
-                        .HasColumnType("float")
+                    b.Property<string>("Salario")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("Salario");
 
                     b.Property<int?>("loginsId")
