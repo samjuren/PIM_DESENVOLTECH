@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PIM_DESENVOLTECH.Models;
 
@@ -11,9 +12,11 @@ using PIM_DESENVOLTECH.Models;
 namespace PIM_DESENVOLTECH.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231125012058_Inicial-criacaoMatheus")]
+    partial class InicialcriacaoMatheus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,8 +52,6 @@ namespace PIM_DESENVOLTECH.Migrations
 
                     b.HasKey("IdDesconto");
 
-                    b.HasIndex("IdFuncionario");
-
                     b.ToTable("descontosSalariais");
                 });
 
@@ -63,13 +64,6 @@ namespace PIM_DESENVOLTECH.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdFolhaPonto"));
 
-                    b.Property<int>("FK_Funcionario")
-                        .HasColumnType("int")
-                        .HasColumnName("FK_IdFuncionario");
-
-                    b.Property<int?>("FuncionarioIdFuncionario")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("HoraPonto")
                         .HasColumnType("datetime2")
                         .HasColumnName("HoraPonto");
@@ -79,8 +73,6 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnName("IdFuncionario");
 
                     b.HasKey("IdFolhaPonto");
-
-                    b.HasIndex("FuncionarioIdFuncionario");
 
                     b.ToTable("FolhaPonto");
                 });
@@ -133,9 +125,16 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Estado");
 
+                    b.Property<int?>("FolhaPontoIdFolhaPonto")
+                        .HasColumnType("int");
+
                     b.Property<bool>("FuncionarioAtivo")
                         .HasColumnType("bit")
                         .HasColumnName("FuncionarioAtivo");
+
+                    b.Property<int>("IdFolhaPonto")
+                        .HasColumnType("int")
+                        .HasColumnName("FK_IdFolhaPonto");
 
                     b.Property<int>("IdLogin")
                         .HasColumnType("int")
@@ -180,6 +179,8 @@ namespace PIM_DESENVOLTECH.Migrations
 
                     b.HasIndex("DescontosId")
                         .IsUnique();
+
+                    b.HasIndex("FolhaPontoIdFolhaPonto");
 
                     b.HasIndex("loginsId");
 
@@ -243,31 +244,25 @@ namespace PIM_DESENVOLTECH.Migrations
                     b.ToTable("RelacaoFerias");
                 });
 
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.DescontosSalariais", b =>
+            modelBuilder.Entity("PIM_DESENVOLTECH.Models.Funcionario", b =>
                 {
-                    b.HasOne("PIM_DESENVOLTECH.Models.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("IdFuncionario")
+                    b.HasOne("PIM_DESENVOLTECH.Models.DescontosSalariais", "Descontos")
+                        .WithOne("Funcionario")
+                        .HasForeignKey("PIM_DESENVOLTECH.Models.Funcionario", "DescontosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Funcionario");
-                });
-
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.FolhaPonto", b =>
-                {
-                    b.HasOne("PIM_DESENVOLTECH.Models.Funcionario", "Funcionario")
+                    b.HasOne("PIM_DESENVOLTECH.Models.FolhaPonto", "FolhaPonto")
                         .WithMany()
-                        .HasForeignKey("FuncionarioIdFuncionario");
+                        .HasForeignKey("FolhaPontoIdFolhaPonto");
 
-                    b.Navigation("Funcionario");
-                });
-
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.Funcionario", b =>
-                {
                     b.HasOne("PIM_DESENVOLTECH.Models.Login", "logins")
                         .WithMany()
                         .HasForeignKey("loginsId");
+
+                    b.Navigation("Descontos");
+
+                    b.Navigation("FolhaPonto");
 
                     b.Navigation("logins");
                 });
@@ -279,6 +274,12 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasForeignKey("FuncionarioIdFuncionario");
 
                     b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("PIM_DESENVOLTECH.Models.DescontosSalariais", b =>
+                {
+                    b.Navigation("Funcionario")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

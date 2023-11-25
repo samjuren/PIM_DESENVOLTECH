@@ -78,28 +78,31 @@
                     <td>@funcionario.NomeCompleto</td>
                     <td>@funcionario.Departamento</td>
                     <td>@funcionario.NomeCargo</td>
-                    <td>@funcionario.Salario</td>
+                    <td>@funcionario.Salario.ToString("F2")</td>
                     <td>
-@*                         @if (funcionario.FolhaPagamentoConfirmada)
+                        @if (funcionario.FolhaPagamentoConfirmada == true)
                         {
                             <a asp-action="VisualizarDesconto" asp-route-id="@funcionario.IdFuncionario" class="ver-descontos-link">
                                 <i class="fa-solid fa-eye"></i> Visualizar
                             </a>
                         }
-                        else
-                        {
-                            <span>Folha de pagamento não gerada</span>
-                        } *@
+                        
                     </td>
                 </tr>
             }
+
+            
+
         </tbody>
+        
     </table>
 
-    <div class="text-center">
-        <button asp-action="GerarFolhaPagamento" class="btn btn-success">Gerar Folha de Pagamento</button>
-    </div>
-
+    @using (Html.BeginForm("GerarFolhaPagamento", "CalculoFolha", FormMethod.Get))
+    {
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">Gerar Folha de Pagamento</button>
+        </div>
+    }
 
 
 

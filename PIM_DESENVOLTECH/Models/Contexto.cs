@@ -16,5 +16,16 @@ namespace PIM_DESENVOLTECH.Models
         public DbSet<FolhaPonto> FolhaPonto { get; set; }
         public DbSet<DescontosSalariais> descontosSalariais { get; set; }
         public DbSet<RelacaoFerias> RelacaoFerias { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Funcionario>()
+                .HasIndex(f => f.DescontosId)
+                .IsUnique();
+
+            // Outras configurações do modelo...
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

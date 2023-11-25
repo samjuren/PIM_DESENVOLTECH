@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PIM_DESENVOLTECH.GerarFolhaServices;
 using PIM_DESENVOLTECH.Models;
 
@@ -20,19 +21,25 @@ namespace PIM_DESENVOLTECH.Controllers
 
             return View(funcionario);
         }
-        //teste
-
+        
+        [HttpGet]
         public IActionResult GerarFolhaPagamento()
         {
             _gerarFolha.CalcularFolha();
 
             var funcionarios = _context.Funcionario.ToList();
+
             return View("Index", funcionarios);
         }
 
-        public IActionResult VisualizarDesconto(int id,double INSS, double ImpostoDeRenda, double ValeTransporte)
+        public IActionResult VisualizarDesconto(int id)
         {
-            return View("Descontos", "CalculoFolha");
+            var funcionario = _context.Funcionario
+            .AsNoTracking()
+            .FirstOrDefault(f => f.IdFuncionario == id);
+
+
+            return View("Descontos", funcionario);
         }
 
         public IActionResult CadastrarFuncionarioLateral()

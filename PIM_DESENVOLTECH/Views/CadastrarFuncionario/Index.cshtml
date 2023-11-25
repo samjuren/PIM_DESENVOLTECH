@@ -79,24 +79,30 @@
                     <div class="col-md-3 fields">
                         <label for="">CPF:</label>
                         <input asp-for="CPF" name="CPF" id="inpCPF" class="form-control" type="text">
+                        <span asp-validation-for="CPF" class="text-danger"></span>
                     </div>
                     <div class="col-md-3 fields">
                         <label for="">RG:</label>
                         <input asp-for="RG" id="inpRG" name="RG" class="form-control" type="text">
+                        <span asp-validation-for="RG" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-3 fields">
-                        <label for="">Email:</label>
-                        <input asp-for="Email" name="Email" id="inpEmail" class="form-control" type="text">
+                        <label for="inpEmail">Email:</label>
+                        <input asp-for="Email" name="Email" id="inpEmail" class="form-control" type="email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
+
                     <div class="col-md-3 fields">
-                        <label for="">Nascimento:</label>
+                        <label for="inpNascimento">Nascimento:</label>
                         <input asp-for="Nascimento" id="inpNascimento" name="Nascimento" class="form-control" type="date">
+                        <span asp-validation-for="Nascimento" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-3 fields">
-                        <label for="">Idade:</label>
+                        <label for="inpIdade">Idade:</label>
                         <input asp-for="Idade" id="inpIdade" name="Idade" class="form-control" type="number">
+                        <span asp-validation-for="Idade" class="text-danger"></span>
                     </div>
 
                     <hr />
@@ -108,8 +114,10 @@
                         <select asp-for="NomeCargo" name="NomeCargo" id="selectCargo" class="form-control">
                             <option value="Analista">Analista de TI</option>
                             <option value="Analista Financeiro">Analista Financeiro</option>
-                            <option value="Desenvolvedor">Desenvolvedor-C#</option>
+                            <option value="Desenvolvedor">Desenvolvedor</option>
+                            <option value="Analista de Dados">Analista de Dados</option>
                             <option value="Assistente">Assistente Geral</option>
+                            <option value="Assistente">Diretor</option>
                             <option value="Advogado">Advogado</option>
                             <option value="Porteiro">Porteiro</option>
                             <option value="Gerente de RH">Gerente de RH</option>                  
@@ -124,17 +132,22 @@
                             <option value="Marketing">Marketing</option>  
                             <option value="Contabilidade">Contabilidade</option>
                             <option value="Financeiro">Financeiro</option>
+                            <option value="Almoxarifado">Almoxarifado</option>
+                            <option value="Diretoria">Diretoria</option>
                         </select>
+                        <span asp-validation-for="Departamento" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-3 fields">
                         <label for="">Salário:</label>
                         <input asp-for="Salario" name="Salario" id="inpSalario" class="form-control" type="number">
+                        <span asp-validation-for="Salario" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-3 fields">
                         <label for="">Data Admissão:</label>
                         <input asp-for="DataAdmissao" name="DataAdmissao" id="inpAdmissao" class="form-control" type="date">
+                        <span asp-validation-for="DataAdmissao" class="text-danger"></span>
                     </div>
 
                     <hr />

@@ -1,4 +1,4 @@
-﻿@model PIM_DESENVOLTECH.Models.DescontosSalariais
+﻿@model PIM_DESENVOLTECH.Models.Funcionario
 
 <head>
     <meta charset="UTF-8">
@@ -54,31 +54,32 @@
     </aside>
 
 
-    <div class="text-center">
-        <form method="post" action="/Descontos/ProcessarDescontos">
-            <div class="card">
-
-            </div>
 
 
+    <h1>Detalhes do Desconto</h1>
 
-
-            <div class="form-group">
-                <label for="valorInss">Valor INSS:</label>
-                <input asp-for="INSS" type="text" id="valorInss" name="INSS" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label for="valorIr">Valor IR:</label>
-                <input asp-for="ImpostoDeRenda" type="text" id="valorIr" name="ImpostoDeRenda" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label for="valorVt">Valor VT:</label>
-                <input asp-for="ValeTransporte" type="text" id="valorVt" name="ValeTransporte" class="form-control" />
-            </div>
-        </form>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Salário Base</th>
+                <th>Desconto INSS</th>
+                <th>Desconto Imposto de Renda</th>
+                <th>Desconto Vale Transporte</th>
+                <th>Salário Líquido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.NomeCompleto</td>
+                <td>@Model.Salario.ToString("F2")</td>
+                <td>@Model.Descontos.INSS.ToString("F2")</td>
+                <td>@Model.Descontos.ImpostoDeRenda.ToString("F2")</td>
+                <td>@Model.Descontos.ValeTransporte.ToString("F2")</td>
+                <td>@(Model.CalcularDesconto).</td>
+            </tr>
+        </tbody>
+    </table>
 
 
 
