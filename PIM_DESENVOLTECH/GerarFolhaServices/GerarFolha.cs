@@ -19,15 +19,17 @@ namespace PIM_DESENVOLTECH.GerarFolhaServices
 
         public void CalcularFolha() 
         {
-            var funcionarios = _context.Funcionario.Include
-                (f => f.Descontos).ToList();
+            var funcionarios = _context.Funcionario.ToList();
 
-            foreach(var funcionario in funcionarios) 
-            { 
-            funcionario.CalcularDesconto();
-             funcionario.FolhaPagamentoConfirmada = true;
+            foreach (var funcionario in funcionarios)
+            {
+                _context.Entry(funcionario)
+                    .Reference(f => f.Descontos)
+                    .Load();
+
+                funcionario.CalcularDesconto();
+                funcionario.FolhaPagamentoConfirmada = true;
             }
-
 
             _context.SaveChanges();
 

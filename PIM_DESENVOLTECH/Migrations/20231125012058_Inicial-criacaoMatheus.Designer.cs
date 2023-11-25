@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PIM_DESENVOLTECH.Models;
 
@@ -11,9 +12,11 @@ using PIM_DESENVOLTECH.Models;
 namespace PIM_DESENVOLTECH.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20231125012058_Inicial-criacaoMatheus")]
+    partial class InicialcriacaoMatheus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,9 +33,6 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnName("IdDesconto");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDesconto"));
-
-                    b.Property<int>("FuncionarioIdFuncionario")
-                        .HasColumnType("int");
 
                     b.Property<double>("INSS")
                         .HasColumnType("float")
@@ -51,8 +51,6 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnName("ValeTransporte");
 
                     b.HasKey("IdDesconto");
-
-                    b.HasIndex("FuncionarioIdFuncionario");
 
                     b.ToTable("descontosSalariais");
                 });
@@ -179,6 +177,9 @@ namespace PIM_DESENVOLTECH.Migrations
 
                     b.HasKey("IdFuncionario");
 
+                    b.HasIndex("DescontosId")
+                        .IsUnique();
+
                     b.HasIndex("FolhaPontoIdFolhaPonto");
 
                     b.HasIndex("loginsId");
@@ -243,19 +244,14 @@ namespace PIM_DESENVOLTECH.Migrations
                     b.ToTable("RelacaoFerias");
                 });
 
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.DescontosSalariais", b =>
+            modelBuilder.Entity("PIM_DESENVOLTECH.Models.Funcionario", b =>
                 {
-                    b.HasOne("PIM_DESENVOLTECH.Models.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioIdFuncionario")
+                    b.HasOne("PIM_DESENVOLTECH.Models.DescontosSalariais", "Descontos")
+                        .WithOne("Funcionario")
+                        .HasForeignKey("PIM_DESENVOLTECH.Models.Funcionario", "DescontosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Funcionario");
-                });
-
-            modelBuilder.Entity("PIM_DESENVOLTECH.Models.Funcionario", b =>
-                {
                     b.HasOne("PIM_DESENVOLTECH.Models.FolhaPonto", "FolhaPonto")
                         .WithMany()
                         .HasForeignKey("FolhaPontoIdFolhaPonto");
@@ -263,6 +259,8 @@ namespace PIM_DESENVOLTECH.Migrations
                     b.HasOne("PIM_DESENVOLTECH.Models.Login", "logins")
                         .WithMany()
                         .HasForeignKey("loginsId");
+
+                    b.Navigation("Descontos");
 
                     b.Navigation("FolhaPonto");
 
@@ -276,6 +274,12 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasForeignKey("FuncionarioIdFuncionario");
 
                     b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("PIM_DESENVOLTECH.Models.DescontosSalariais", b =>
+                {
+                    b.Navigation("Funcionario")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

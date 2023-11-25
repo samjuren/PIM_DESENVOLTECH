@@ -16,7 +16,11 @@ namespace PIM_DESENVOLTECH.Models
 
         [Column("FK_IdFuncionario")]
         [Display(Name = "Código Funcionario")]
+        [ForeignKey("Funcionario")]
         public int IdFuncionario { get; set; }
+        
+        
+       
 
         [Column("ValeTransporte")]
         [Display(Name = "Vale Transporte")]

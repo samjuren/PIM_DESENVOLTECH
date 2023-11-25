@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.WebEncoders.Testing;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.WebEncoders.Testing;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -111,6 +112,11 @@ namespace PIM_DESENVOLTECH.Models
 
         [NotMapped]
         public DescontosSalariais Descontos { get; set; }
+
+        [ForeignKey("Descontos")]
+        
+        public int DescontosId { get; set; }
+
 
         public void CalcularDesconto()
         {
