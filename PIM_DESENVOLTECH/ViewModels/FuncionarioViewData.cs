@@ -4,9 +4,7 @@ namespace PIM_DESENVOLTECH.ViewModels
 {
     public class FuncionarioViewData
     {
-        public FolhaPonto folhaPonto { get; set; }    
-        public IQueryable<FolhaPonto> folhaPontoList { get; set; }    
-
-
+        public FolhaPonto? folhaPonto { get; set; }    
+        public IQueryable<FolhaPonto>? folhaPontoList { get; set; }    
     }
 }

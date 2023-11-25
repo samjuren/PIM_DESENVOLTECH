@@ -20,7 +20,7 @@ namespace PIM_DESENVOLTECH.Models
         public int IdFuncionario { get; set; }
 
         [Column("FK_Funcionario")]
-        [Display(Name = "FK_Funcionario")]
+        [Display(Name = "PK_FK_Funcionario")]
         public Funcionario? Funcionario { get; set; }
 
         [Column("FK_IdFuncionario")]

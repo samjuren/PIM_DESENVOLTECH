@@ -10,7 +10,7 @@ namespace PIM_DESENVOLTECH.Models
         {
             Descontos = new DescontosSalariais();
 
-        }    
+        }
 
 
         [Column("IdFuncionario")]
@@ -97,7 +97,22 @@ namespace PIM_DESENVOLTECH.Models
         [Column("FK_IdLogin")]
         [Display(Name = "Login")]
         public int IdLogin { get; set; }
+
+        [NotMapped]
+        public bool FolhaPagamentoConfirmada { get; set; }
+
+        [NotMapped]
+        public DescontosSalariais Descontos { get; set; }
+
+        public void CalcularDesconto()
+        {
+            Descontos.ValeTransporte = Salario * 0.06; ;// breno que me passou esses dados fixo 
+            Descontos.INSS = Salario * 0.08;
+            Descontos.ImpostoDeRenda = Salario * 0.15;
+
+            Salario -= (Descontos.ValeTransporte + Descontos.INSS + Descontos.ImpostoDeRenda);
+        }
     }
 
-    
+
 }

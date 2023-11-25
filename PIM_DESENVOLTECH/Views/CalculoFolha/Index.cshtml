@@ -80,7 +80,7 @@
                     <td>@funcionario.NomeCargo</td>
                     <td>@funcionario.Salario</td>
                     <td>
-                        @if (funcionario.FolhaPagamentoConfirmada)
+@*                         @if (funcionario.FolhaPagamentoConfirmada)
                         {
                             <a asp-action="VisualizarDesconto" asp-route-id="@funcionario.IdFuncionario" class="ver-descontos-link">
                                 <i class="fa-solid fa-eye"></i> Visualizar
@@ -89,7 +89,7 @@
                         else
                         {
                             <span>Folha de pagamento não gerada</span>
-                        }l
+                        } *@
                     </td>
                 </tr>
             }
