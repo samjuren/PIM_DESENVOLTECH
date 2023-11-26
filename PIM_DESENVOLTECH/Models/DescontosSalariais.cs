@@ -10,18 +10,6 @@ namespace PIM_DESENVOLTECH.Models
         [Key]
         public int IdDesconto { get; set; }
 
-        [Column("FK_Funcionario")]
-        [Display(Name = "FK Funcionario")]
-        public Funcionario Funcionario { get; set; }
-
-        [Column("FK_IdFuncionario")]
-        [Display(Name = "Código Funcionario")]
-        [ForeignKey("Funcionario")]
-        public int IdFuncionario { get; set; }
-        
-        
-       
-
         [Column("ValeTransporte")]
         [Display(Name = "Vale Transporte")]
         public double ValeTransporte { get; set; }
@@ -31,10 +19,16 @@ namespace PIM_DESENVOLTECH.Models
         public double INSS { get; set; }
 
         [Column("ImpostoDeRenda")]
-        [Display(Name = "ImpostoDeRenda")] 
+        [Display(Name = "ImpostoDeRenda")]
         public double ImpostoDeRenda { get; set; }
 
-        
+        [Column("FuncionarioId")]
+        [Display(Name = "Código Funcionario")]
+        public int FuncionarioId { get; set; }
 
+        
+        [ForeignKey("FuncionarioId")]
+        public Funcionario Funcionario { get; set; }
     }
+
 }

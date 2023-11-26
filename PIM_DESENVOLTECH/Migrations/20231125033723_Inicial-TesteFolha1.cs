@@ -22,11 +22,6 @@ namespace PIM_DESENVOLTECH.Migrations
                 name: "FuncionarioIdFuncionario",
                 table: "descontosSalariais");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Funcionario_DescontosId",
-                table: "Funcionario",
-                column: "DescontosId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_descontosSalariais_FK_IdFuncionario",

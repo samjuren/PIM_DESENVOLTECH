@@ -19,12 +19,10 @@ namespace PIM_DESENVOLTECH.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Funcionario>()
-                .HasIndex(f => f.DescontosId)
-                .IsUnique();
+          
 
             // Outras configurações do modelo...
-
+             
             base.OnModelCreating(modelBuilder);
         }
     }

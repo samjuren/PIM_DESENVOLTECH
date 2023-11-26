@@ -16,6 +16,7 @@
 
             <div class="profile">
                 <i class="fa-solid fa-user"></i>
+                <span>@Context.Session.GetString("sessaoUsuarioNome")</span>
             </div>
 
             <nav class="nav-menu">
@@ -73,10 +74,11 @@
             <tr>
                 <td>@Model.NomeCompleto</td>
                 <td>@Model.Salario.ToString("F2")</td>
-                <td>@Model.Descontos.INSS.ToString("F2")</td>
-                <td>@Model.Descontos.ImpostoDeRenda.ToString("F2")</td>
-                <td>@Model.Descontos.ValeTransporte.ToString("F2")</td>
-                <td>@(Model.CalcularDesconto).</td>
+                <td>@(Model.ValorDescontoINSS.ToString("F2") ?? "N/A")</td>
+                <td>@(Model.ValorDescontoImpostoDeRenda.ToString("F2") ?? "N/A")</td>
+                <td>@(Model.ValorDescontoValeTransporte.ToString("F2") ?? "N/A")</td>
+                <td>@(Model.SalarioLiquido.ToString("F2"))</td>
+                
             </tr>
         </tbody>
     </table>

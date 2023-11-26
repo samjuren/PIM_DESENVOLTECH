@@ -38,6 +38,8 @@ namespace PIM_DESENVOLTECH.Controllers
             .AsNoTracking()
             .FirstOrDefault(f => f.IdFuncionario == id);
 
+            funcionario.CalcularDesconto();
+
 
             return View("Descontos", funcionario);
         }

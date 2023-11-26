@@ -24,6 +24,7 @@
 
             <div class="profile">
                 <i class="fa-solid fa-user"></i>
+                <span>@Context.Session.GetString("sessaoUsuarioNome")</span>
             </div>
 
             <nav class="nav-menu">
@@ -60,7 +61,10 @@
 
         </header>
     </aside>
-
+    
+    
+    
+    
     <table class="table">
         <thead>
             <tr>
@@ -96,6 +100,7 @@
         </tbody>
         
     </table>
+
 
     @using (Html.BeginForm("GerarFolhaPagamento", "CalculoFolha", FormMethod.Get))
     {

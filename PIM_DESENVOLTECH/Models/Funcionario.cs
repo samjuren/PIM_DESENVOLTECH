@@ -115,25 +115,43 @@ namespace PIM_DESENVOLTECH.Models
         [NotMapped]
         public bool FolhaPagamentoConfirmada { get; set; }
 
+      
+
         [NotMapped]
         public DescontosSalariais Descontos { get; set; }
+        [NotMapped]
+        
+        public double ValorDescontoINSS => Descontos.INSS;
 
-        public int DescontosId { get; set; }
+        [NotMapped]
+        public double ValorDescontoImpostoDeRenda => Descontos.ImpostoDeRenda;
+
+        [NotMapped]
+        public double ValorDescontoValeTransporte => Descontos.ValeTransporte;
+       
+        [NotMapped]
+        public double SalarioLiquido => CalcularDesconto();
 
 
-        public void CalcularDesconto()
+        internal double CalcularDesconto()
         {
-            Descontos.ValeTransporte = Salario * 0.06; ;// breno que me passou esses dados fixo 
-            Descontos.INSS = Salario * 0.08;
-            Descontos.ImpostoDeRenda = Salario * 0.15;
+            double salarioLiquido = Salario;
 
-            Salario -= (Descontos.ValeTransporte + Descontos.INSS + Descontos.ImpostoDeRenda);
+            Descontos.ValeTransporte = salarioLiquido * 0.06;
+            Descontos.INSS = salarioLiquido * 0.08;
+            Descontos.ImpostoDeRenda = salarioLiquido * 0.15;
+
+            salarioLiquido -= (Descontos.ValeTransporte + Descontos.INSS + Descontos.ImpostoDeRenda);
+
+
+            return salarioLiquido;
         }
+
 
     }
 
 
-   
+
 }
     
 

@@ -31,13 +31,13 @@ namespace PIM_DESENVOLTECH.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDesconto"));
 
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int")
+                        .HasColumnName("FuncionarioId");
+
                     b.Property<double>("INSS")
                         .HasColumnType("float")
                         .HasColumnName("INSS");
-
-                    b.Property<int>("IdFuncionario")
-                        .HasColumnType("int")
-                        .HasColumnName("FK_IdFuncionario");
 
                     b.Property<double>("ImpostoDeRenda")
                         .HasColumnType("float")
@@ -49,7 +49,7 @@ namespace PIM_DESENVOLTECH.Migrations
 
                     b.HasKey("IdDesconto");
 
-                    b.HasIndex("IdFuncionario");
+                    b.HasIndex("FuncionarioId");
 
                     b.ToTable("descontosSalariais");
                 });
@@ -99,6 +99,7 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnName("CEP");
 
                     b.Property<string>("CPF")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("CPF");
 
@@ -122,10 +123,8 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Departamento");
 
-                    b.Property<int>("DescontosId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Email");
 
@@ -150,7 +149,9 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnName("Nascimento");
 
                     b.Property<string>("NomeCargo")
-                        .HasColumnType("nvarchar(max)")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
                         .HasColumnName("NomeCargo");
 
                     b.Property<string>("NomeCompleto")
@@ -166,6 +167,7 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnName("NumeroRua");
 
                     b.Property<string>("RG")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("RG");
 
@@ -177,9 +179,6 @@ namespace PIM_DESENVOLTECH.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("IdFuncionario");
-
-                    b.HasIndex("DescontosId")
-                        .IsUnique();
 
                     b.HasIndex("loginsId");
 
@@ -247,7 +246,7 @@ namespace PIM_DESENVOLTECH.Migrations
                 {
                     b.HasOne("PIM_DESENVOLTECH.Models.Funcionario", "Funcionario")
                         .WithMany()
-                        .HasForeignKey("IdFuncionario")
+                        .HasForeignKey("FuncionarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
