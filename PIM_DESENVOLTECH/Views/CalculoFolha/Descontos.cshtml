@@ -55,36 +55,33 @@
     </aside>
 
 
+    <div class="text-center">
+   
+    <div class="container mt-4">
+        <h1 class="mb-3">Detalhes do Desconto</h1>
 
+        <div class="mb-4">
+            <strong>Nome:</strong> @Model.NomeCompleto
+            <br />
+            <strong>Salário Base:</strong> R$ @Model.Salario.ToString("F2")
+        </div>
 
-    <h1>Detalhes do Desconto</h1>
+        <div class="descontos-lista mb-4">
+            <h4>Descontos:</h4>
+            <ul>
+                <li>Valor Descontado do INSS: <span class="text-danger">- R$ @Model.ValorDescontoINSS.ToString("F2")</span></li>
+                <li>Valor Descontado do Imposto de Renda: <span class="text-danger">- R$ @Model.ValorDescontoImpostoDeRenda.ToString("F2")</span></li>
+                <li>Valor Descontado do Vale Transporte: <span class="text-danger">- R$ @Model.ValorDescontoValeTransporte.ToString("F2")</span></li>
+            </ul>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Salário Base</th>
-                <th>Desconto INSS</th>
-                <th>Desconto Imposto de Renda</th>
-                <th>Desconto Vale Transporte</th>
-                <th>Salário Líquido</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Model.NomeCompleto</td>
-                <td>@Model.Salario.ToString("F2")</td>
-                <td>@(Model.ValorDescontoINSS.ToString("F2") ?? "N/A")</td>
-                <td>@(Model.ValorDescontoImpostoDeRenda.ToString("F2") ?? "N/A")</td>
-                <td>@(Model.ValorDescontoValeTransporte.ToString("F2") ?? "N/A")</td>
-                <td>@(Model.SalarioLiquido.ToString("F2"))</td>
-                
-            </tr>
-        </tbody>
-    </table>
+        <div class="mb-4">
+            <strong>Salário Líquido:</strong> R$ @Model.SalarioLiquido.ToString("F2")
+        </div>
 
-
-
+        <a asp-action="Index" class="btn btn-primary">Voltar</a>
+    </div>
+   </div>
 
 
 </body>
