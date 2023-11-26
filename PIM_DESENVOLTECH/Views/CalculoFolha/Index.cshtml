@@ -61,53 +61,52 @@
 
         </header>
     </aside>
-    
-    
-    
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Departamento</th>
-                <th>Função</th>
-                <th>Salário Base</th>
-                <th>Visualizar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var funcionario in Model)
-            {
+
+
+
+
+    <div class="container mt-4">
+        <table class="table table-bordered">
+            <thead class="table-dark">
                 <tr>
-                    <td>@funcionario.NomeCompleto</td>
-                    <td>@funcionario.Departamento</td>
-                    <td>@funcionario.NomeCargo</td>
-                    <td>@funcionario.Salario.ToString("F2")</td>
-                    <td>
-                        @if (funcionario.FolhaPagamentoConfirmada == true)
-                        {
-                            <a asp-action="VisualizarDesconto" asp-route-id="@funcionario.IdFuncionario" class="ver-descontos-link">
-                                <i class="fa-solid fa-eye"></i> Visualizar
-                            </a>
-                        }
-                        
-                    </td>
+                    <th>Nome</th>
+                    <th>Departamento</th>
+                    <th>Função</th>
+                    <th>Salário Base</th>
+                    <th>Visualizar</th>
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @foreach (var funcionario in Model)
+                {
+                    <tr>
+                        <td>@funcionario.NomeCompleto</td>
+                        <td>@funcionario.Departamento</td>
+                        <td>@funcionario.NomeCargo</td>
+                        <td>R$ @funcionario.Salario.ToString("F2")</td>
+                        <td>
+                            @if (funcionario.FolhaPagamentoConfirmada == true)
+                            {
+                                <a asp-action="VisualizarDesconto" asp-route-id="@funcionario.IdFuncionario" class="btn btn-primary btn-sm">
+                                    <i class="fa-solid fa-eye"></i> Visualizar
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-            
+        @using (Html.BeginForm("GerarFolhaPagamento", "CalculoFolha", FormMethod.Get))
+        {
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Gerar Folha de Pagamento</button>
+            </div>
+        }
+    </div>
 
-        </tbody>
-        
-    </table>
 
-
-    @using (Html.BeginForm("GerarFolhaPagamento", "CalculoFolha", FormMethod.Get))
-    {
-        <div class="text-center">
-            <button type="submit" class="btn btn-success">Gerar Folha de Pagamento</button>
-        </div>
-    }
+    
 
 
 
