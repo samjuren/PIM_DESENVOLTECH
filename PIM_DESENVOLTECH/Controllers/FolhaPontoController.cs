@@ -21,15 +21,27 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             Login login = _sessao.BuscarSessaoDoUsuario();
 
-            var funcionario = _context.Funcionario.FirstOrDefault(x => x.IdLogin == login.Id).IdFuncionario;
+            var folha = _context.FolhaPonto.FirstOrDefault(x => x.Funcionario.IdLogin == login.Id);
+            var listFolhaPonto = _context.FolhaPonto.ToList().AsQueryable().Where(x => x.IdFuncionario == folha.IdFuncionario);
+            var func = _context.Funcionario.FirstOrDefault(x => x.IdLogin == login.Id);
 
-            var listFuncionario = _context.Funcionario.Where(x => x.IdLogin == login.Id);
-
-            var listFolhaPonto = _context.FolhaPonto.Where(x => x.IdFuncionario == funcionario);
+            bool listaPreenchida = _context.FolhaPonto
+                .Any(x => x.IdFuncionario == func.IdFuncionario);
 
             FuncionarioViewData fvd = new FuncionarioViewData();
 
-            return View(fvd);
+            if (listaPreenchida)
+            {
+                fvd.folhaPontoList = listFolhaPonto;
+                fvd.folhaPonto = folha;
+                fvd.folhaPonto.Funcionario = func;
+
+                return View(fvd);
+            }
+            else
+            {
+                return View(fvd);
+            }
         }
 
         public IActionResult CadastrarPonto(string NomeCompleto, DateTime dataHoraRegistro)
@@ -47,13 +59,10 @@ namespace PIM_DESENVOLTECH.Controllers
                 _context.FolhaPonto.Add(new FolhaPonto
                 {
                     HoraPonto = DateTime.Now,
-                    IdFuncionario = func.IdFuncionario
-                });
-
-                var IdFolhaPonto = _context.FolhaPonto.FirstOrDefault(x => x.IdFuncionario == func.IdFuncionario);
-
-                //func.FolhaPonto = IdFolhaPonto;
-                //func.IdFolhaPonto = IdFolhaPonto.IdFolhaPonto;
+                    IdFuncionario = func.IdFuncionario,
+                    FK_Funcionario = func.IdFuncionario,
+                    Funcionario = func
+                });  
 
                 _context.SaveChanges();
             }

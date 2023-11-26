@@ -61,14 +61,14 @@
 
     <main class="dados-content">
         <form id="registroForm" asp-action="CadastrarPonto">
-            <div style="margin: 280px;">               
+            <div style="margin-top: 61px;margin-left: 270px;margin-right: 322px;">
                 <input asp-for="folhaPonto.Funcionario.NomeCompleto" class="form-control" type="text" id="nomeFuncionario" name="NomeCompleto" required autocomplete="name" placeholder="Digite o nome do Funcionario">
 
                 <button class="btn btn-success mt-4" style="margin-left: 170px" type="submit">Bater Ponto</button>
             </div>
         </form>
 
-        <table class="table" style="margin-top: 266px;margin-left: 68px;">
+        <table class="table" style="margin-top: 200px;">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -77,13 +77,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.folhaPontoList)
+                @if (Model.folhaPontoList != null)
                 {
-                    <tr>
-                        <td></td>
-                        <td>@item.Funcionario.NomeCompleto</td>
-                        <td>@item.HoraPonto</td>
-                    </tr>
+                    @foreach (var item in Model.folhaPontoList)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@item.Funcionario?.NomeCompleto</td>
+                            <td>@item.HoraPonto</td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>

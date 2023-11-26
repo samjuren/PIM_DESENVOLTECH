@@ -22,12 +22,6 @@
     <link rel="stylesheet" href="~/css/teste.css">
     <aside class="menu-lateral">
         <header class="header-menu">
-
-            <div class="profile">
-                <i class="fa-solid fa-user"></i>
-                <span>@Context.Session.GetString("sessaoUsuarioNome")</span>
-            </div>
-
             <nav class="nav-menu">
                 <form>
                     <button asp-action="CalculoPagamento">
@@ -57,21 +51,14 @@
                     </div>
                 </form>
             </nav>
-
         </header>
     </aside>
 
 
     <main class="dados-content">
 
-        <h2>Relção de Férias</h2>
-
-        <form>
-            <input asp-for="funcionario.NomeCompleto" name="Nome" placeholder="Digite o nome do funcionario"/>
-            <button asp-action="BuscarFeriasFuncionario">Buscar</button>
-        </form>
-
-        <table class="table" style="margin-top: 266px;margin-left: 68px;">
+        <h2 style="margin-left: 10px">Relção de Férias</h2>
+        <table class="table" style="margin-top: 90px;">
             <thead>
                 <tr>
                     <th scope="col">#</th>

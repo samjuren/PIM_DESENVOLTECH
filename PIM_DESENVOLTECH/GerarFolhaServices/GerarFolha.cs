@@ -5,8 +5,6 @@ namespace PIM_DESENVOLTECH.GerarFolhaServices
 {
     public class GerarFolha
     {
-
-
         private readonly Contexto _context;
 
         public GerarFolha(Contexto context)
