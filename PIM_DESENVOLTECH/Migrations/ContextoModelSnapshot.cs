@@ -31,13 +31,13 @@ namespace PIM_DESENVOLTECH.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDesconto"));
 
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int")
+                        .HasColumnName("FuncionarioId");
+
                     b.Property<double>("INSS")
                         .HasColumnType("float")
                         .HasColumnName("INSS");
-
-                    b.Property<int>("IdFuncionario")
-                        .HasColumnType("int")
-                        .HasColumnName("FK_IdFuncionario");
 
                     b.Property<double>("ImpostoDeRenda")
                         .HasColumnType("float")
@@ -49,7 +49,7 @@ namespace PIM_DESENVOLTECH.Migrations
 
                     b.HasKey("IdDesconto");
 
-                    b.HasIndex("IdFuncionario");
+                    b.HasIndex("FuncionarioId");
 
                     b.ToTable("descontosSalariais");
                 });
@@ -122,9 +122,6 @@ namespace PIM_DESENVOLTECH.Migrations
                     b.Property<string>("Departamento")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Departamento");
-
-                    b.Property<int>("DescontosId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -249,7 +246,7 @@ namespace PIM_DESENVOLTECH.Migrations
                 {
                     b.HasOne("PIM_DESENVOLTECH.Models.Funcionario", "Funcionario")
                         .WithMany()
-                        .HasForeignKey("IdFuncionario")
+                        .HasForeignKey("FuncionarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

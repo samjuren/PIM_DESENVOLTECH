@@ -362,3 +362,13 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /PIM_DESENVOLTECH/Program.cs
+/PIM_DESENVOLTECH/Migrations/20231126202911_Inicial-TesteFolhaTestee.Designer.cs
+/PIM_DESENVOLTECH/Migrations/20231126202911_Inicial-TesteFolhaTestee.cs
+/PIM_DESENVOLTECH/Migrations/20231126201948_Inicial-TesteFolhaTeste.cs
+/PIM_DESENVOLTECH/Migrations/20231126201658_Inicial-TesteFolha1344.Designer.cs
+/PIM_DESENVOLTECH/Migrations/20231126201658_Inicial-TesteFolha1344.cs
+/PIM_DESENVOLTECH/Migrations/20231126201325_Inicial-TesteFolha134.cs
+/PIM_DESENVOLTECH/Migrations/20231126200826_Inicial-TesteFolha13.Designer.cs
+/PIM_DESENVOLTECH/Migrations/20231126200826_Inicial-TesteFolha13.cs
+/PIM_DESENVOLTECH/Migrations/20231126201325_Inicial-TesteFolha134.Designer.cs
+/PIM_DESENVOLTECH/Migrations/20231126201948_Inicial-TesteFolhaTeste.Designer.cs
