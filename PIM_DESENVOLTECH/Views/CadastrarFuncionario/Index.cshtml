@@ -1,12 +1,5 @@
 ﻿@model PIM_DESENVOLTECH.Models.Funcionario
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-
-}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -229,8 +222,12 @@
                     </div>
 
                     <div class="col-md-1 fields">
-                       
-                        <input  asp-for="logins.IsAdm" name="IsADM" id="inpIsADM" class="form-control" type="checkbox">
+                        <label for="">É ADM?</label>
+                        <select asp-for="logins.IsAdm" name="IsADM" id="IsADM" class="form-control">
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                        </select>
+                        <span asp-validation-for="logins.IsAdm" class="text-danger"></span>
                     </div>
 
 

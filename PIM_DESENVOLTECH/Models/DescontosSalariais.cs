@@ -12,7 +12,7 @@ namespace PIM_DESENVOLTECH.Models
 
         [Column("FK_Funcionario")]
         [Display(Name = "FK Funcionario")]
-        public Funcionario Funcionario { get; set; }
+        public Funcionario? Funcionario { get; set; }
 
         [Column("FK_IdFuncionario")]
         [Display(Name = "Código Funcionario")]

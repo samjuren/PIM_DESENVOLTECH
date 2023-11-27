@@ -40,6 +40,7 @@ namespace PIM_DESENVOLTECH.Controllers
 
         )
         {
+            if (Complemento == null) Complemento = "Não tem";
 
             if (ModelState.IsValid)
             {
