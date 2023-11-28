@@ -39,11 +39,11 @@ namespace PIM_DESENVOLTECH.Models
 
         [Column("DataDemissao")]
         [Display(Name = "Data Demissão")]
-        public DateTime DataDemissao { get; set; }
+        public DateTime? DataDemissao { get; set; }
 
         [Column("FuncionarioAtivo")]
         [Display(Name = "Código Funcionario Ativo")]
-        public bool FuncionarioAtivo { get; set; }
+        public bool? FuncionarioAtivo { get; set; }
 
         [Column("NomeCompleto")]
         [Display(Name = "Nome Completo")]
@@ -118,7 +118,7 @@ namespace PIM_DESENVOLTECH.Models
       
 
         [NotMapped]
-        public DescontosSalariais Descontos { get; set; }
+        public DescontosSalariais? Descontos { get; set; }
         [NotMapped]
         
         public double ValorDescontoINSS => Descontos.INSS;

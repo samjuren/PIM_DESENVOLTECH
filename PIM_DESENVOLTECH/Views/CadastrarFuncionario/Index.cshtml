@@ -236,15 +236,27 @@
 
 
                     <div class="col-md-12 fields">
-                        <button asp-action="CadastrarFuncionarioBanco" type="submit" class="btn btn-success float-right">Enviar</button>
+                        <button asp-action="CadastrarFuncionarioBanco" type="submit" class="btn btn btn-primary">Enviar</button>
                     </div>
                 </div>
             </div>
         </form>
     </main>
 
-
+    
 
 
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $(".editar-func").on("click", function (e) {
+            e.preventDefault();
+            var funcionarioId = $(this).data("funcionario-id");
+
+
+            window.location.href = "/Editarfun/Visualizar?funcionarioId=" + funcionarioId;
+        });
+    });
+</script>

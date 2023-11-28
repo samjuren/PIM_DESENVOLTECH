@@ -1,4 +1,4 @@
-﻿@model PIM_DESENVOLTECH.Models.Funcionario
+﻿@model List<Funcionario>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/css/teste.css">
-    <title>Home</title>
+    <title>Editar</title>
 </head>
 
 <body>
@@ -38,20 +38,20 @@
                         <i class="fa-solid fa-umbrella-beach"></i>
                         <span>Relação de férias</span>
                     </button>
-                  
+
                     <button asp-action="EditarFuncionario">
                         <i class="fa-solid fa-umbrella-beach"></i>
                         <span>Editar Funcionario</span>
                     </button>
-                  
-                     
+
+
                     <button asp-action="CadastrarFuncionario">
-                            <i class="fa-solid fa-plus"></i>
-                            <span>Cadastrar funcionário</span>
-                        </button>
-                    
-         
-                   
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Cadastrar funcionário</span>
+                    </button>
+
+
+
 
                     <div class="log-out">
                         <button asp-action="SairSistema">
@@ -66,10 +66,43 @@
         </header>
     </aside>
 
+    <div class="container mt-4">
+        <h1>Lista de Funcionários</h1>
 
-    <main class="dados-content">
-        <h1 class="tech">Desenvoltech</h1>
-    </main>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Departamento</th>
+                    <th>Função</th>
+                    <th>Salário Base</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                @if (Model != null)
+                {
+                    @foreach (var funcionario in Model)
+                    {
+                        <tr>
+                            <td>@funcionario.NomeCompleto</td>
+                            <td>@funcionario.Departamento</td>
+                            <td>@funcionario.NomeCargo</td>
+                            <td>@funcionario.Salario.ToString("F2")</td>
+                            <td>
+                                <a asp-action="EditarFunc" asp-route-id="@funcionario.IdFuncionario" class="btn btn-primary">
+                                    <i class="fa-solid fa-pencil"></i> Editar
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                
+            </tbody>
+        </table>
+    </div>
+   
 
 </body>
 </html>
