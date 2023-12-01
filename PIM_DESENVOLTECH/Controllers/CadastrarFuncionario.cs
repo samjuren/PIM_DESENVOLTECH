@@ -30,7 +30,7 @@ namespace PIM_DESENVOLTECH.Controllers
                                                         DateTime DataAdmissao, 
                                                         string NomeRua,
                                                         int NumeroRua,
-                                                        string Complemento, 
+                                                        string? Complemento, 
                                                         string Estado, 
                                                         string Cidade,
                                                         string CEP,
@@ -95,6 +95,10 @@ namespace PIM_DESENVOLTECH.Controllers
         public IActionResult FeriasLateral()
         {
             return RedirectToAction("Index", "Ferias");
+        }
+        public IActionResult EditarFuncionario()
+        {
+            return RedirectToAction("Index", "EditarFuncionario");
         }
         public IActionResult CalculoPagamento()
         {

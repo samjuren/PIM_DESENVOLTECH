@@ -87,7 +87,10 @@ namespace PIM_DESENVOLTECH.Controllers
         {
             return RedirectToAction("Index", "CalculoFolha");
         }
-
+        public IActionResult EditarFuncionario()
+        {
+            return RedirectToAction("Index", "EditarFuncionario");
+        }
         public IActionResult SairSistema()
         {
             return RedirectToAction("Index", "Login");

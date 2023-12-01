@@ -72,20 +72,20 @@ namespace PIM_DESENVOLTECH.Controllers
                 throw;
             }
         }
-
         public IActionResult CadastrarFuncionarioLateral()
         {
             return RedirectToAction("Index", "CadastrarFuncionario");
         }
+
         public IActionResult FolhaPontoLateral()
         {
             return RedirectToAction("Index", "FolhaPonto");
         }
-
         public IActionResult FeriasLateral()
         {
             return RedirectToAction("Index", "Ferias");
         }
+
         public IActionResult CalculoPagamento()
         {
             return RedirectToAction("Index", "CalculoFolha");
@@ -94,6 +94,11 @@ namespace PIM_DESENVOLTECH.Controllers
         public IActionResult SairSistema()
         {
             return RedirectToAction("Index", "Login");
+        }
+
+        public IActionResult EditarFuncionario()
+        {
+            return RedirectToAction("Index", "EditarFuncionario");
         }
     }
 }

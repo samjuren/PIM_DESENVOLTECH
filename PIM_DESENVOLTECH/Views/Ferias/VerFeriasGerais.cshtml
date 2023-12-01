@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="~/css/teste.css">
     <aside class="menu-lateral">
         <header class="header-menu">
+
+            <div class="profile">
+                <i class="fa-solid fa-user"></i>
+                <span>@Context.Session.GetString("sessaoUsuarioNome")</span>
+            </div>
             <nav class="nav-menu">
                 <form>
                     <button asp-action="CalculoPagamento">
@@ -38,7 +43,10 @@
                         <i class="fa-solid fa-umbrella-beach"></i>
                         <span>Relação de férias</span>
                     </button>
-
+                    <button asp-action="EditarFuncionario">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                        <span>Editar Funcionario</span>
+                    </button>
                     <button asp-action="CadastrarFuncionario">
                         <i class="fa-solid fa-plus"></i>
                         <span>Cadastrar funcionário</span>
